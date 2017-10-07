@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import SSC from 'react-ssc';
 import * as actions from '../actions';
 import * as scss from './App.scss';
+
+
+function dummyLoad(fn, time) {
+    return setTimeout(fn, time);
+}
 
 
 class App extends React.Component {
 
     componentDidMount() {
-        this.props.onLoad(window);
+        dummyLoad(this.props.onLoad, 1000);
+        this.props.getView(window);
         window.addEventListener('resize', this.props.onResize);
     }
 
@@ -16,19 +23,22 @@ class App extends React.Component {
     }
 
     render() {
-        return (
-            <div id="main">Hello WOrld
-            </div>
+        return this.props.view.loaded ? (
+            <SSC.Container>Hello WOrld</SSC.Container>
+        ) : (
+            <SSC.PageContent><SSC.Spinner /></SSC.PageContent>
         );
     }
 }
 
-const mapState = ({ layout }) => ({
-    layout
+
+const mapState = ({ view }) => ({
+    view
 });
 
 const mapDispatch = dispatch => ({
-    onLoad: window => dispatch(actions.getView(window)),
+    onLoad: () => dispatch(actions.onLoad()),
+    getView: window => dispatch(actions.getView(window)),
     onResize: $event => dispatch(actions.onResize($event))
 });
 

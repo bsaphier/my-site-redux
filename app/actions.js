@@ -1,6 +1,10 @@
 import * as actionTypes from './constants';
 
 
+export const onLoad = () => ({
+    type: actionTypes.LOAD_COMPLETE,
+});
+
 export const openBurger = () => ({
     type: actionTypes.OPEN_BURGER,
 });

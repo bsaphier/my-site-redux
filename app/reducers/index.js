@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import layoutReducer from './layout';
+import viewReducer from './view';
 
 const rootReducer = combineReducers({
-    layout: layoutReducer,
+    view: viewReducer,
 });
 
 export default rootReducer;
