@@ -1,9 +1,18 @@
 {
+    "extends": "fullstack",
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true
         }
     },
-    "root": true
+    "root": true,
+    "rules": {
+        "no-warning-comments": "off",
+        "id-length": "off",
+        "react/jsx-pascal-case": "off",
+        "semi": [ "warn", "always" ],
+        "react/prop-types": "off",
+        "react/display-name": "off"
+    }
 }

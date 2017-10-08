@@ -1,0 +1,7 @@
+.greetingTextWrap {
+   position: absolute;
+   left: 50%;
+//    will-change: transform, top;
+   transform: translate(-50%, 0%);
+   cursor: default;
+}

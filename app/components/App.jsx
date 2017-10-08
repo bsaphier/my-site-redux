@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { RRWAEngine } from 'react-redux-webaudio';
 import SSC from 'react-ssc';
-import * as actions from '../actions';
-import * as scss from './App.scss';
+import * as actionCreators from '../actions';
+import Loader from './Loader.jsx';
+import Greeting from './Greeting.jsx';
 
 
-function dummyLoad(fn, time) {
-    return setTimeout(fn, time);
-}
-
-
-class App extends React.Component {
+class App extends Component {
 
     componentDidMount() {
-        dummyLoad(this.props.onLoad, 1000);
+        this.props.loadData();
+        this.props.loadFonts();
         this.props.getView(window);
         window.addEventListener('resize', this.props.onResize);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { loading, dataDidLoad, fontsDidLoad } = nextProps.appState;
+        if (loading && dataDidLoad && fontsDidLoad) {
+            this.props.onLoaded();
+        }
     }
 
     componentWillUnmount() {
@@ -23,23 +28,31 @@ class App extends React.Component {
     }
 
     render() {
-        return this.props.view.loaded ? (
-            <SSC.Container>Hello WOrld</SSC.Container>
-        ) : (
-            <SSC.PageContent><SSC.Spinner /></SSC.PageContent>
+        const { loading } = this.props.appState;
+
+        return loading ? <Loader /> : (
+            <SSC.Container>
+                <RRWAEngine />
+                <SSC.Page style={{ paddingTop: 0 }}>
+                    <Greeting />
+                </SSC.Page>
+                <SSC.Page>
+                    <SSC.PageContent>Filler</SSC.PageContent>
+                </SSC.Page>
+            </SSC.Container>
         );
     }
 }
 
 
-const mapState = ({ view }) => ({
-    view
-});
+const mapState = ({ view, appState }) => ({ view, appState });
 
 const mapDispatch = dispatch => ({
-    onLoad: () => dispatch(actions.onLoad()),
-    getView: window => dispatch(actions.getView(window)),
-    onResize: $event => dispatch(actions.onResize($event))
+    onLoaded:     () => dispatch(actionCreators.onLoaded()),
+    loadFonts:    () => dispatch(actionCreators.loadFonts()),
+    loadData:     () => dispatch(actionCreators.loadData()),
+    getView:  window => dispatch(actionCreators.getView(window)),
+    onResize: $event => dispatch(actionCreators.getView($event.target))
 });
 
 

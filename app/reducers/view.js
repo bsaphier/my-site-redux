@@ -2,7 +2,6 @@ import * as actionTypes from '../constants';
 
 
 const INIT_STATE = {
-    loaded: false,
     client: {
         dimensions: { width: 0, height: 0 },
         orientation: 'landscape'
@@ -16,14 +15,12 @@ export default (state = INIT_STATE, action) => {
     const nextState = { ...state };
     switch (action.type) {
 
-        case actionTypes.LOAD_COMPLETE:
-            nextState.loaded = true;
-            return nextState;
-
         case actionTypes.RESIZE:
-            const { dimensions, orientation } = action;
-            nextState.client = { dimensions, orientation };
-            nextState.menu.condensed = dimensions.width < 900;
+            nextState.client = {
+                dimensions: action.dimensions,
+                orientation: action.orientation
+            };
+            nextState.menu.condensed = action.dimensions.width < 900;
             return nextState;
 
         case actionTypes.OPEN_BURGER:
