@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { Motion } from 'react-motion';
 import SSC from 'react-ssc';
 import s from './greeting.scss';
-import { bluesScale } from '../sound';
 import * as actionCreators from '../actions';
-import { greeting as greetingMotion } from '../utils';
+import { bluesScale, greetingMotion } from '../utils';
 
 
 const greetingMessage = [
@@ -25,10 +24,10 @@ const greetingMessage = [
         text: 'I\'m a software engineer',
         note: 3
     }, {
-        text: 'Exploring the',
+        text: 'Exploring',
         note: 4
     }, {
-        text: 'crossover between',
+        text: 'the crossover between',
         note: 5
     }, {
         text: 'Sound & Code',
@@ -36,8 +35,8 @@ const greetingMessage = [
     }
 ];
 
-class Greeting extends Component {
 
+class Greeting extends Component {
     constructor(props) {
         super(props);
         this.state = { motion: greetingMotion.initial };
@@ -50,10 +49,9 @@ class Greeting extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.appState.displayGreeting) {
-            this.setState(state => (
+        if (!this.props.displayGreeting && nextProps.displayGreeting) {
+            this.setState(() => (
                 {
-                    ...state,
                     motion: greetingMotion.enter
                 }
             ));
@@ -62,9 +60,8 @@ class Greeting extends Component {
 
     hover({ id, sound }) {
         this.props.playSound(sound);
-        this.setState(state => (
+        this.setState(() => (
             {
-                ...state,
                 motion: {
                     ...greetingMotion.enter,
                     [id]: greetingMotion.exit[id]
@@ -74,9 +71,8 @@ class Greeting extends Component {
     }
 
     leave({ id }) {
-        this.setState(state => (
+        this.setState(() => (
             {
-                ...state,
                 motion: {
                     ...greetingMotion.enter,
                     [id]: greetingMotion.enter[id]
@@ -88,6 +84,8 @@ class Greeting extends Component {
     render() {
         return (
             <SSC.PageContent>
+                {/* <span className={s.guideOne} /> */}
+                {/* <span className={s.guideTwo} /> */}
                 <Motion style={this.state.motion}>
                     {interpStyle => (
                         <div className={s.greetingTextWrap} style={{ top: `${interpStyle.top}%`}}>
@@ -97,6 +95,8 @@ class Greeting extends Component {
                                         key={`title${+i}`}
                                         hover={this.hover}
                                         leave={this.leave}
+                                        className={`${s.title} ${s[`title${i}`]}`}
+                                        style={{ letterSpacing: `${interpStyle[`title${i}`]}rem`}}
                                         cbArgs={{ id: `title${i}`, sound: bluesScale[title.note] }}>
                                         {title.text}
                                     </SSC.TitleFx>
@@ -111,14 +111,14 @@ class Greeting extends Component {
 }
 
 
-const mapState = ({ appState }) => ({
-    appState
-});
+const mapState = ({ appState: { displayGreeting } }) => ({ displayGreeting });
 
 const mapDispatch = dispatch => ({
-    playSound:          (note) => dispatch(actionCreators.playSound(note)),
-    toggleGreeting: (isHidden) => dispatch(isHidden ? actionCreators.showGreeting() : actionCreators.hideGreeting())
+    playSound:      (note)     => dispatch(actionCreators.playSound(note)),
+    toggleGreeting: (isHidden) => {
+        const _actionCreator = isHidden ? actionCreators.showGreeting : actionCreators.hideGreeting;
+        dispatch(_actionCreator());
+    }
 });
-
 
 export default connect(mapState, mapDispatch)(Greeting);

@@ -41,7 +41,7 @@
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.6",
     "react-redux-webaudio": "^1.0.1",
-    "react-ssc": "^0.0.1-10",
+    "react-ssc": "^0.0.1-0-1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   }

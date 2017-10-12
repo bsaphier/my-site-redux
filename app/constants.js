@@ -14,6 +14,17 @@ export const LOAD_COMPLETE = 'LOAD_COMPLETE';
 /* GREETING ACTION-TYPES */
 export const TOGGLE_GREETING = 'TOGGLE_GREETING';
 
+
 /* WEB AUDIO */
 export const ROOT_IN_HZ = 220;
 export const BLUES_STEPS = [1, (6 / 5), (4 / 3), (45 / 32), (3 / 2), (9 / 5), 2];
+export const OSC_TYPES = {
+    sine:     'sine',
+    square:   'square',
+    triangle: 'triangle'
+};
+export const FILTER_TYPES = {
+    lowpass:  'lowpass',
+    highpass: 'highpass',
+    bandpass: 'bandpass'
+};

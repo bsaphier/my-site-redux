@@ -1,6 +1,6 @@
 import { actionCreators as audioActionCreators } from 'react-redux-webaudio';
 import * as actionTypes from './constants';
-import soundCreator from './sound';
+import { soundCreator } from './utils';
 
 
 /* LAYOUT ACTION-CREATORS */

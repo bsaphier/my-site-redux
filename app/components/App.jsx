@@ -10,6 +10,7 @@ import Greeting from './Greeting.jsx';
 class App extends Component {
 
     componentDidMount() {
+        // super(); ?? what does this do?
         this.props.loadData();
         this.props.loadFonts();
         this.props.getView(window);
