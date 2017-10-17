@@ -25,7 +25,7 @@ export const greetingMotion = {
     },
     enter: {
         top:    spring(42, presets.stiff),
-        title0: spring(0.66, presets.wobbly),
+        title0: spring(0.65, presets.wobbly),
         title1: spring(0.92, presets.gentle),
         title2: spring(1.45, presets.wobbly),
         title3: spring(-0.83, presets.gentle),

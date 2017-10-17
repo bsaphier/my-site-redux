@@ -21,7 +21,8 @@ export const BLUES_STEPS = [1, (6 / 5), (4 / 3), (45 / 32), (3 / 2), (9 / 5), 2]
 export const OSC_TYPES = {
     sine:     'sine',
     square:   'square',
-    triangle: 'triangle'
+    triangle: 'triangle',
+    sawtooth: 'sawtooth'
 };
 export const FILTER_TYPES = {
     lowpass:  'lowpass',

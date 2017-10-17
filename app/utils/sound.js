@@ -1,7 +1,8 @@
 import { BLUES_STEPS, ROOT_IN_HZ, OSC_TYPES, FILTER_TYPES } from '../constants';
 
 
-const OSC_TYPE = OSC_TYPES.triangle;
+const OSC1_TYPE = OSC_TYPES.triangle;
+const OSC2_TYPE = OSC_TYPES.sawtooth;
 const FILTER_TYPE = FILTER_TYPES.bandpass;
 
 
@@ -9,12 +10,15 @@ export class Synth {
     constructor(context) {
         this.context = context;
         this.gainNode = this.context.createGain();
+        this.levelNode = this.context.createGain();
         this.masterGain = this.context.createGain();
     }
 
-    setupOsc(oscType) {
-        this.oscillator = this.context.createOscillator();
-        this.oscillator.type = oscType;
+    setupOsc(oscType1, oscType2) {
+        this.oscillator1 = this.context.createOscillator();
+        this.oscillator2 = this.context.createOscillator();
+        this.oscillator1.type = oscType1;
+        this.oscillator2.type = oscType2;
     }
 
     setupFilter(filterType, value, qValue) {
@@ -33,26 +37,32 @@ export class Synth {
 
     setup() {
         this.setupOutput();
-        this.setupOsc(OSC_TYPE);
+        this.setupOsc(OSC1_TYPE, OSC2_TYPE);
         this.setupFilter(FILTER_TYPE, 1760, 0.162);
-        this.oscillator.connect(this.filter);
+        this.oscillator1.connect(this.filter);
+        this.oscillator2.connect(this.levelNode);
+        this.levelNode.connect(this.filter);
         this.filter.connect(this.gainNode);
+        this.levelNode.gain.value = 0.025;
     }
 
     play(value) {
         this.setup();
-        this.oscillator.frequency.value = value;
+        this.oscillator1.frequency.value = value;
+        this.oscillator2.frequency.value = value * 2.05;
         this.gainNode.gain.setValueAtTime(0, this.context.currentTime);
-        this.gainNode.gain.linearRampToValueAtTime(1, this.context.currentTime + 0.02);
-        this.oscillator.start(this.context.currentTime + 0.001);
+        this.gainNode.gain.linearRampToValueAtTime(0.6, this.context.currentTime + 0.02);
+        this.oscillator1.start(this.context.currentTime + 0.001);
+        this.oscillator2.start(this.context.currentTime + 0.001);
     }
 
     release() {
-        this.gainNode.gain.exponentialRampToValueAtTime(0.0001, this.context.currentTime + 0.162);
+        this.gainNode.gain.exponentialRampToValueAtTime(0.0001, this.context.currentTime + 1);
     }
 
     kill() {
-        this.oscillator.stop(this.context.currentTime + 0.3);
+        this.oscillator1.stop(this.context.currentTime + 1.1);
+        this.oscillator2.stop(this.context.currentTime + 1.1);
         for (let i in this) {
             if (this.hasOwnProperty(i)) {
                 this[i] = undefined;

@@ -13,7 +13,7 @@ const greetingMessage = [
         note: 0
     }, {
         text: 'My name is',
-        note: 2
+        note: 5
     }, {
         text: 'Ben',
         note: 1
@@ -84,11 +84,11 @@ class Greeting extends Component {
     render() {
         return (
             <SSC.PageContent>
-                {/* <span className={s.guideOne} /> */}
-                {/* <span className={s.guideTwo} /> */}
+                {/* {<span className={s.guideOne} />} */}
+                {/* {<span className={s.guideTwo} />} */}
                 <Motion style={this.state.motion}>
                     {interpStyle => (
-                        <div className={s.greetingTextWrap} style={{ top: `${interpStyle.top}%`}}>
+                        <div className={`${s.greetingTextWrap} ${s.hueShift}`} style={{ top: `${interpStyle.top}%`}}>
                             {
                                 greetingMessage.map((title, i) => (
                                     <SSC.TitleFx

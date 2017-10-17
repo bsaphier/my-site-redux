@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { RRWAEngine } from 'react-redux-webaudio';
 import SSC from 'react-ssc';
 import * as actionCreators from '../actions';
+import About from './About.jsx';
 import Loader from './Loader.jsx';
+import Footer from './Footer.jsx';
 import Greeting from './Greeting.jsx';
 
 
@@ -38,8 +40,10 @@ class App extends Component {
                     <Greeting />
                 </SSC.Page>
                 <SSC.Page>
-                    <SSC.PageContent>Filler</SSC.PageContent>
+                    <About />
+                    {/* <SSC.PageContent>Filler</SSC.PageContent> */}
                 </SSC.Page>
+                <Footer />
             </SSC.Container>
         );
     }

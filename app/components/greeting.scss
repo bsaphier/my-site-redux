@@ -1,9 +1,30 @@
+@keyframes hueShift {
+    0% {-moz-filter: hue-rotate(0deg)}
+    50% {-moz-filter: hue-rotate(-45deg)}
+    100% {-moz-filter: hue-rotate(0deg)}
+    
+    0% {-ms-filter: hue-rotate(0deg)}
+    50% {-ms-filter: hue-rotate(-45deg)}
+    100% {-ms-filter: hue-rotate(0deg)}
+    
+    0% {-o-filter: hue-rotate(0deg)}
+    50% {-o-filter: hue-rotate(-45deg)}
+    100% {-o-filter: hue-rotate(0deg)}
+
+    0% {-webkit-filter: hue-rotate(0deg)}
+    50% {-webkit-filter: hue-rotate(-45deg)}
+    100% {-webkit-filter: hue-rotate(0deg)}
+}
+
 .greetingTextWrap {
    position: absolute;
    left: 50%;
-//    will-change: transform, top;
+   will-change: transform, top;
    transform: translate(-50%, -50%);
    cursor: default;
+   &.hueShift {
+       animation: hueShift 13s infinite linear;
+   }
 }
 
 .title {
@@ -14,16 +35,16 @@
 }
 
 .title0 {
-    font-weight: 200;
+    font-weight: 100;
     font-size: 8rem;
-    line-height: 5rem;
-    padding-left: 0.4rem;
+    line-height: 6rem;
+    padding-left: 0.33rem;
 }
 
 .title1 {
     font-weight: 400;
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 4rem;
     padding-left: 0.7rem;
 }
 
