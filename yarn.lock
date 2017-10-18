@@ -3690,9 +3690,9 @@ react-redux@^5.0.5, react-redux@^5.0.6:
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
 
-react-ssc@^0.0.1007:
-  version "0.0.1007"
-  resolved "https://registry.yarnpkg.com/react-ssc/-/react-ssc-0.0.1007.tgz#1d6b4b9fe94eb606d6e995f3b42e2b88a7c56a87"
+react-ssc@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-ssc/-/react-ssc-0.0.3.tgz#10609dac73b83bced209bb112c55f341aa5646a3"
   dependencies:
     react "^16.0.0"
     react-dom "^16.0.0"

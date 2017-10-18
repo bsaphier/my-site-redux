@@ -24,16 +24,18 @@ const siteDesc = `The core of this website is built with React & Redux. The desi
 const About = () => {
     return (
         <SSC.PageContent>
+
             <div className={s.plaxWrap}>
                 <SSC.Parallax layers={plaxLayers}>
                     {layer => <img className={s.bgLayer} src={layer.svg} />}
                 </SSC.Parallax>
             </div>
+
             <div className={s.cWrap}>
                 <SSC.Card title={'About This Site'}>
                     {clicked => (
                         <div className={s.cContent}>
-                            {clicked ? siteDesc : `${siteDesc.slice(0, 347)}...`}
+                            {clicked ? siteDesc : `${siteDesc.slice(0, 147)}...`}
                         </div>
                     )}
                 </SSC.Card>
@@ -48,6 +50,13 @@ const About = () => {
                     {() => (
                         <div className={s.cContent}>
                             {'filler filler filler filler'}
+                        </div>
+                    )}
+                </SSC.Card>
+                <SSC.Card title={`Some Stuff I'm good at`}>
+                    {() => (
+                        <div className={s.cContent}>
+                            {'React Angular Node Express'}
                         </div>
                     )}
                 </SSC.Card>
