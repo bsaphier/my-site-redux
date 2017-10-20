@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SSC from 'react-ssc';
+import * as Cards from './cards';
 import s from './about.scss';
 import * as actionCreators from '../actions';
 
@@ -18,52 +19,21 @@ const plaxLayers = [
     }
 ];
 
-const siteDesc = `The core of this website is built with React & Redux. The design is my original work but inspired by Google's Material Design. To implement the design, I built a small UI library of React components called react-ssc. The interactive audio (for an example, hover your cursor over the welcome message) is managed by another library I wrote: react-redux-webaudio. Both libraries are available as open-source projects on Github and NPM. In addition to React & Redux, these are some other useful libraries/tools I used to build this site: React-Motion, Webpack, and of course, Babel.`;
-
-
 const About = () => {
     return (
         <SSC.PageContent>
-
             <div className={s.plaxWrap}>
                 <SSC.Parallax layers={plaxLayers}>
                     {layer => <img className={s.bgLayer} src={layer.svg} />}
                 </SSC.Parallax>
             </div>
-
             <div className={s.cWrap}>
-                <SSC.Card title={'About This Site'}>
-                    {clicked => (
-                        <div className={s.cContent}>
-                            {clicked ? siteDesc : `${siteDesc.slice(0, 147)}...`}
-                        </div>
-                    )}
-                </SSC.Card>
-                <SSC.Card title={'About Me'}>
-                    {() => (
-                        <div className={s.cContent}>
-                            {'links n stuff'}
-                        </div>
-                    )}
-                </SSC.Card>
-                <SSC.Card title={'Something Else'}>
-                    {() => (
-                        <div className={s.cContent}>
-                            {'filler filler filler filler'}
-                        </div>
-                    )}
-                </SSC.Card>
-                <SSC.Card title={`Some Stuff I'm good at`}>
-                    {() => (
-                        <div className={s.cContent}>
-                            {'React Angular Node Express'}
-                        </div>
-                    )}
-                </SSC.Card>
+                <Cards.SiteDescription />
+                <Cards.AboutMe />
+                <Cards.Skills />
             </div>
         </SSC.PageContent>
     );
 };
-
 
 export default connect()(About);

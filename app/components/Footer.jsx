@@ -6,7 +6,7 @@ import s from './footer.scss';
 const Footer = () => {
     return (
         <SSC.Footer>
-            Footer
+            <span className={s.footerText}>This site was made with love by Benjamin Saphier © 2017</span>
         </SSC.Footer>
     );
 };
