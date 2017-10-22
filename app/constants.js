@@ -14,6 +14,10 @@ export const LOAD_COMPLETE = 'LOAD_COMPLETE';
 /* GREETING ACTION-TYPES */
 export const TOGGLE_GREETING = 'TOGGLE_GREETING';
 
+/* SOUND ACTION-TYPES */
+export const DRONE_ON = 'DRONE_ON';
+export const DRONE_OFF = 'DRONE_OFF';
+
 
 /* WEB AUDIO */
 export const ROOT_IN_HZ = 220;

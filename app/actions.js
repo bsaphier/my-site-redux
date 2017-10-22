@@ -1,6 +1,6 @@
 import { actionCreators as audioActionCreators } from 'react-redux-webaudio';
 import * as actionTypes from './constants';
-import { soundCreator } from './utils';
+import { createDrone, dronePlayer, soundCreator } from './utils';
 
 
 /* LAYOUT ACTION-CREATORS */
@@ -79,8 +79,35 @@ export const loadData = () => dispatch => {
 };
 
 
+/* SOUND ACTION-CREATORS */
+export const activateDrone = () => (
+    {
+        type: actionTypes.DRONE_ON
+    }
+);
+
+export const deactivateDrone = () => (
+    {
+        type: actionTypes.DRONE_OFF
+    }
+);
+
+export const toggleDrone = on => dispatch => {
+    if (on) {
+        dispatch(activateDrone());
+    } else {
+        dispatch(deactivateDrone());
+    }
+};
+
+
 /* AUDIO ACTION-CREATORS */
 export const playSound = note => dispatch => {
     let pluckSynth = soundCreator( note );
+    dispatch(audioActionCreators.emit(pluckSynth));
+};
+
+export const playDrone = note => dispatch => {
+    let pluckSynth = soundCreator({ noteInHz: note });
     dispatch(audioActionCreators.emit(pluckSynth));
 };

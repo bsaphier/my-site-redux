@@ -13,8 +13,9 @@
     }
     .inlineLink {
         text-decoration: none;
-        font-weight: 400;
+        font-weight: 600;
         font-family: inherit;
+        color: inherit;
         &:visited {
             color: #2E0EBF;
         }
@@ -26,16 +27,6 @@
         justify-content: space-between;
         flex-wrap: wrap;
         .skill {
-            // cursor: default;
-            // margin-right: 15px;
-            // font-weight: 500;
-            // transition: letter-spacing .218s ease-in-out;
-            // &:hover {
-            //     font-weight: 100;
-            //     font-family: 'Roboto', sans-serif;
-            //     letter-spacing: 0.1em;
-            //     color: rgba(0,0,0,.87);
-            // }
             &.clicked {
             }
         }
@@ -51,7 +42,7 @@
     text-align: center;
     float: left;
     width: 90%;
-    margin-right: auto;
+    margin-right: 10%;
     color: rgba(0,0,0,0.38);
     padding: 0 0 15px 0;
     &.clicked {

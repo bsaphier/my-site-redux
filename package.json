@@ -4,7 +4,7 @@
   "description": "Yet another super simple site to serve as my portfolio",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.config.dev.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -41,7 +41,7 @@
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.6",
     "react-redux-webaudio": "^1.0.1",
-    "react-ssc": "^0.0.4",
+    "react-ssc": "^0.0.63",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   }

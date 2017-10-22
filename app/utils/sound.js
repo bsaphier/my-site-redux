@@ -5,6 +5,37 @@ const OSC1_TYPE = OSC_TYPES.triangle;
 const OSC2_TYPE = OSC_TYPES.sawtooth;
 const FILTER_TYPE = FILTER_TYPES.bandpass;
 
+export class Drone {
+    constructor(context) {
+        this.context = context;
+        this.gain = this.context.createGain();
+        this.osc1level = this.context.createGain();
+        this.osc2level = this.context.createGain();
+        this.masterGain = this.context.createGain();
+        this.masterGain.gain.value = 0.90;
+        this.osc1 = this.context.createOscillator();
+        this.osc2 = this.context.createOscillator();
+        this.osc1.type = OSC_TYPES.triangle;
+        this.osc2.type = OSC_TYPES.triangle;
+        this.osc1.connect(this.osc1level);
+        this.osc2.connect(this.osc2level);
+        this.osc1level.connect(this.gain);
+        this.osc2level.connect(this.gain);
+        this.gain.connect(this.masterGain);
+        this.masterGain.connect(this.context.destination);
+    }
+
+    attackDecaySustain(lvl, attackDuration, decayDuration, sustain) {
+        this.gain.gain.setValueAtTime(0, this.context.currentTime);
+        this.gain.gain.linearRampToValueAtTime(lvl, this.context.currentTime + attackDuration);
+        this.gain.gain.linearRampToValueAtTime(sustain, this.context.currentTime + attackDuration + decayDuration);
+    }
+
+    release(duration) {
+        this.gain.gain.exponentialRampToValueAtTime(0, this.context.currentTime + duration);
+    }
+}
+
 
 export class Synth {
     constructor(context) {
@@ -12,6 +43,10 @@ export class Synth {
         this.gainNode = this.context.createGain();
         this.levelNode = this.context.createGain();
         this.masterGain = this.context.createGain();
+    }
+
+    getTime() {
+        return this.context.currentTime;
     }
 
     setupOsc(oscType1, oscType2) {
@@ -50,19 +85,19 @@ export class Synth {
         this.setup();
         this.oscillator1.frequency.value = value;
         this.oscillator2.frequency.value = value * 2.05;
-        this.gainNode.gain.setValueAtTime(0, this.context.currentTime);
-        this.gainNode.gain.linearRampToValueAtTime(0.6, this.context.currentTime + 0.02);
-        this.oscillator1.start(this.context.currentTime + 0.001);
-        this.oscillator2.start(this.context.currentTime + 0.001);
+        this.gainNode.gain.setValueAtTime(0, this.getTime());
+        this.gainNode.gain.linearRampToValueAtTime(0.6, this.getTime() + 0.02);
+        this.oscillator1.start(this.getTime() + 0.001);
+        this.oscillator2.start(this.getTime() + 0.001);
     }
 
     release() {
-        this.gainNode.gain.exponentialRampToValueAtTime(0.0001, this.context.currentTime + 1);
+        this.gainNode.gain.exponentialRampToValueAtTime(0.0001, this.getTime() + 1);
     }
 
     kill() {
-        this.oscillator1.stop(this.context.currentTime + 1.1);
-        this.oscillator2.stop(this.context.currentTime + 1.1);
+        this.oscillator1.stop(this.getTime() + 1.1);
+        this.oscillator2.stop(this.getTime() + 1.1);
         for (let i in this) {
             if (this.hasOwnProperty(i)) {
                 this[i] = undefined;

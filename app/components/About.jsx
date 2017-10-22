@@ -19,11 +19,16 @@ const plaxLayers = [
     }
 ];
 
-const About = () => {
+
+const About = (props) => {
+    const cb = (m, r) => props.playDrone(250 + ((m.x + m.y) % 500));
     return (
         <SSC.PageContent>
             <div className={s.plaxWrap}>
-                <SSC.Parallax layers={plaxLayers}>
+                <div className={s.droneBtn} onClick={() => props.droneToggle(!props.droneOn)}>
+                    {'Sound is ' + (props.droneOn ? 'On' : 'Off')}
+                </div>
+                <SSC.Parallax layers={plaxLayers} callback={props.droneOn ? cb : () => {}}>
                     {layer => <img className={s.bgLayer} src={layer.svg} />}
                 </SSC.Parallax>
             </div>
@@ -36,4 +41,15 @@ const About = () => {
     );
 };
 
-export default connect()(About);
+
+const mapState = ({ sound }) => ({
+    droneOn: sound.droneOn
+});
+
+const mapDispatch = dispatch => ({
+    droneToggle: on => dispatch(actionCreators.toggleDrone(on)),
+    playDrone: note => dispatch(actionCreators.playDrone(note))
+});
+
+
+export default connect(mapState, mapDispatch)(About);
