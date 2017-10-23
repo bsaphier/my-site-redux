@@ -1,6 +1,6 @@
 import { actionCreators as audioActionCreators } from 'react-redux-webaudio';
 import * as actionTypes from './constants';
-import { createDrone, dronePlayer, soundCreator } from './utils';
+import { soundCreator } from './utils';
 
 
 /* LAYOUT ACTION-CREATORS */
@@ -13,6 +13,13 @@ export const openBurger = () => (
 export const closeBurger = () => (
     {
         type: actionTypes.CLOSE_BURGER
+    }
+);
+
+export const handleScroll = (nextScrollPos) => (
+    {
+        type: actionTypes.ON_SCROLL,
+        scrollPos: nextScrollPos
     }
 );
 

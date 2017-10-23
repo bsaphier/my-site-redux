@@ -3,6 +3,7 @@ import * as actionTypes from '../constants';
 
 const INIT_STATE = {
     client: {
+        scrollPos: { x: 0, y: 0 },
         dimensions: { width: 0, height: 0 },
         orientation: 'landscape'
     },
@@ -17,10 +18,15 @@ export default (state = INIT_STATE, action) => {
 
         case actionTypes.RESIZE:
             nextState.client = {
+                ...nextState.client,
                 dimensions: action.dimensions,
                 orientation: action.orientation
             };
             nextState.menu.condensed = action.dimensions.width < 900;
+            return nextState;
+
+        case actionTypes.ON_SCROLL:
+            nextState.client.scrollPos = action.scrollPos;
             return nextState;
 
         case actionTypes.OPEN_BURGER:

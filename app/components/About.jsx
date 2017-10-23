@@ -25,7 +25,7 @@ const About = (props) => {
     return (
         <SSC.PageContent>
             <div className={s.plaxWrap}>
-                <div className={s.droneBtn} onClick={() => props.droneToggle(!props.droneOn)}>
+                <div className={props.droneOn ? `${s.droneBtn} ${s.clicked}` : s.droneBtn} onClick={() => props.droneToggle(!props.droneOn)}>
                     {'Sound is ' + (props.droneOn ? 'On' : 'Off')}
                 </div>
                 <SSC.Parallax layers={plaxLayers} callback={props.droneOn ? cb : () => {}}>
@@ -35,7 +35,7 @@ const About = (props) => {
             <div className={s.cWrap}>
                 <Cards.SiteDescription />
                 <Cards.AboutMe />
-                <Cards.Skills />
+                {/* <Cards.Skills /> */}
             </div>
         </SSC.PageContent>
     );

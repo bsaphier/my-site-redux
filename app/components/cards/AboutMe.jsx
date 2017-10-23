@@ -32,7 +32,7 @@ const handleClick = ($event) => {
 
 const AboutMe = () => {
     return (
-        <SSC.Card title={'About Me'}>
+        <SSC.Card title={'About Me'} expandable>
             {(clicked) => (
                 <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
                     <div className={clicked ? `${s.linksWrap} ${s.clicked}` : s.linksWrap}>

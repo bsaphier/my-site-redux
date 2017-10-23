@@ -5,6 +5,7 @@ import SSC from 'react-ssc';
 import s from './greeting.scss';
 import * as actionCreators from '../actions';
 import { bluesScale, greetingMotion } from '../utils';
+import GreetingFooter from './GreetingFooter.jsx';
 
 
 const greetingMessage = [
@@ -39,7 +40,9 @@ const greetingMessage = [
 class Greeting extends Component {
     constructor(props) {
         super(props);
-        this.state = { motion: greetingMotion.initial };
+        this.state = {
+            motion: greetingMotion.initial
+        };
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
     }
@@ -48,14 +51,23 @@ class Greeting extends Component {
         this.props.toggleGreeting(true);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (!this.props.displayGreeting && nextProps.displayGreeting) {
-            this.setState(() => (
-                {
-                    motion: greetingMotion.enter
-                }
-            ));
+    componentWillReceiveProps({ displayGreeting }) {
+        // const prevShowFooter1 = this.props.showFooter1;
+        const prevDisplayGreeting = this.props.displayGreeting;
+        const greetingIn = !prevDisplayGreeting && displayGreeting;
+        const greetingOut = prevDisplayGreeting && !displayGreeting;
+        if (greetingIn) {
+            this.setState(() => ({ motion: greetingMotion.enter }));
+        } else if (greetingOut) {
+            this.setState(() => ({ motion: greetingMotion.exit }));
         }
+        // if (showFooter1 && !prevShowFooter1) {
+        //     /* footer moves in */
+        //     this.setState(() => ({ footer: true }));
+        // } else if (!showFooter1 && prevShowFooter1) {
+        //     /* footer moves out */
+        //     this.setState(() => ({ footer: false }));
+        // }
     }
 
     hover({ id, sound }) {
@@ -88,7 +100,7 @@ class Greeting extends Component {
                 {/* {<span className={s.guideTwo} />} */}
                 <Motion style={this.state.motion}>
                     {interpStyle => (
-                        <div className={`${s.greetingTextWrap} ${s.hueShift}`} style={{ top: `${interpStyle.top}%`}}>
+                        <div className={this.props.displayGreeting ? `${s.greetingTextWrap} ${s.hueShift}` : s.greetingTextWrap} style={{ top: `${interpStyle.top}%`}}>
                             {
                                 greetingMessage.map((title, i) => (
                                     <SSC.TitleFx
@@ -105,13 +117,21 @@ class Greeting extends Component {
                         </div>
                     )}
                 </Motion>
+                <div className={this.props.displayGreeting ? `${s.footWrap} ${s.hueShift}` : s.footWrap}>
+                    <GreetingFooter display={this.props.showFooter1} />
+                    <GreetingFooter display={this.props.showFooter2} />
+                </div>
             </SSC.PageContent>
         );
     }
 }
 
 
-const mapState = ({ appState: { displayGreeting } }) => ({ displayGreeting });
+const mapState = ({ view, appState }) => ({
+    showFooter1: view.client.scrollPos.y < view.client.dimensions.height / 32,
+    showFooter2: view.client.scrollPos.y < view.client.dimensions.height,
+    displayGreeting: appState.displayGreeting
+});
 
 const mapDispatch = dispatch => ({
     playSound:      (note)     => dispatch(actionCreators.playSound(note)),

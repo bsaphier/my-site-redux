@@ -1,30 +1,19 @@
 @keyframes hueShift {
-    0% {-moz-filter: hue-rotate(0deg)}
-    50% {-moz-filter: hue-rotate(-45deg)}
-    100% {-moz-filter: hue-rotate(0deg)}
-    
-    0% {-ms-filter: hue-rotate(0deg)}
-    50% {-ms-filter: hue-rotate(-45deg)}
-    100% {-ms-filter: hue-rotate(0deg)}
-    
-    0% {-o-filter: hue-rotate(0deg)}
-    50% {-o-filter: hue-rotate(-45deg)}
-    100% {-o-filter: hue-rotate(0deg)}
-
-    0% {-webkit-filter: hue-rotate(0deg)}
-    50% {-webkit-filter: hue-rotate(-45deg)}
-    100% {-webkit-filter: hue-rotate(0deg)}
+    0% {filter: hue-rotate(0deg)}
+    50% {filter: hue-rotate(-45deg)}
+    100% {filter: hue-rotate(0deg)}
 }
 
 .greetingTextWrap {
-   position: absolute;
+   position: fixed;
    left: 50%;
-   will-change: transform, top;
+   will-change: transform, top, filter;
    transform: translate(-50%, -50%);
    cursor: default;
-   &.hueShift {
-       animation: hueShift 13s infinite linear;
-   }
+}
+
+.hueShift {
+    animation: hueShift 13s infinite linear;
 }
 
 .title {
@@ -90,6 +79,15 @@
     padding-left: 0.3rem;
 }
 
+.footWrap {
+    box-sizing: border-box;
+    margin: auto auto -5rem;
+    background: transparent;
+    will-change: filter;
+    :first-child {
+        margin-bottom: 50px;
+    }
+}
 
 .guideOne {
     position: absolute;

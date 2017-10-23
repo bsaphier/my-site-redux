@@ -1,17 +1,20 @@
 
 .cContent {
     position: absolute;
-    left: 0;
+    top: 0;
     right: 0;
-    padding: 0 15px;
-    font-family: 'Raleway';
-    text-align: justify;
+    bottom: 0;
+    padding: 9px 15px 0;
+    letter-spacing: initial;
+    line-height: 1.1rem;
+    overflow: hidden;
     &.clicked {
         position: relative;
         padding: 0;
         max-width: 100%;
     }
     .inlineLink {
+        cursor: pointer;
         text-decoration: none;
         font-weight: 600;
         font-family: inherit;

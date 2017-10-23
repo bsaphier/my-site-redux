@@ -4,7 +4,7 @@ import SSC from 'react-ssc';
 
 const Loader = () => (
     <SSC.PageContent>
-        <SSC.Spinner />
+        <SSC.Spinner color={'#6E4EFF'} />
     </SSC.PageContent>
 );
 
