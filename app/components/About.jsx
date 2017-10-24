@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SSC from 'react-ssc';
 import * as Cards from './cards';
+import SiteDescription from './SiteDescription.jsx';
 import s from './about.scss';
 import * as actionCreators from '../actions';
 
@@ -24,18 +25,23 @@ const About = (props) => {
     const cb = (m, r) => props.playDrone(250 + ((m.x + m.y) % 500));
     return (
         <SSC.PageContent>
-            <div className={s.plaxWrap}>
-                <div className={props.droneOn ? `${s.droneBtn} ${s.clicked}` : s.droneBtn} onClick={() => props.droneToggle(!props.droneOn)}>
+            <div className={s.topHalf}>
+                <div
+                className={props.droneOn ? `${s.droneBtn} ${s.clicked}` : s.droneBtn}
+                onClick={() => props.droneToggle(!props.droneOn)}>
                     {'Sound is ' + (props.droneOn ? 'On' : 'Off')}
                 </div>
                 <SSC.Parallax layers={plaxLayers} callback={props.droneOn ? cb : () => {}}>
-                    {layer => <img className={s.bgLayer} src={layer.svg} />}
+                    {
+                        layer =>
+                            <img className={s.bgLayer} src={layer.svg} />
+                    }
                 </SSC.Parallax>
             </div>
-            <div className={s.cWrap}>
-                <Cards.SiteDescription />
+            <div className={s.bottomHalf}>
+                <SiteDescription />
                 <Cards.AboutMe />
-                {/* <Cards.Skills /> */}
+                <Cards.Skills />
             </div>
         </SSC.PageContent>
     );

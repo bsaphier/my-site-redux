@@ -1,6 +1,6 @@
 import React from 'react';
 import SSC from 'react-ssc';
-import s from './cards.scss';
+import s from './site-description.scss';
 
 
 const siteDesc = `The core of this website is built with React & Redux. The design is my original work but inspired by Google's Material Design. To implement the design, I built a small UI library of React components called react-ssc. The interactive audio (for an example, hover your cursor over the welcome message) is managed by another library I wrote: react-redux-webaudio. Both libraries are available as open-source projects on Github and NPM. In addition to React & Redux, these are some other useful libraries/tools I used to build this site: React-Motion, Webpack, and of course, Babel.`;
@@ -13,9 +13,9 @@ const handleClick = ($event) => {
 
 const SiteDescription = () => {
     return (
-        <SSC.Card title={'About This Site'} expandable>
-            {clicked => (
-                <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
+        <SSC.Cell>
+            <SSC.Title>{'About This Site'}</SSC.Title>
+                <div className={s.cContent}>
                     The core of this website is built with
                     <a className={s.inlineLink} onClick={handleClick} href="https://reactjs.org/"> React</a> &
                     <a className={s.inlineLink} onClick={handleClick} href="http://redux.js.org/"> Redux</a>.
@@ -30,8 +30,7 @@ const SiteDescription = () => {
                     <a className={s.inlineLink} onClick={handleClick} href="https://webpack.js.org/"> Webpack</a>, and of course,
                     <a className={s.inlineLink} onClick={handleClick} href="https://babeljs.io/"> Babel</a>.
                 </div>
-            )}
-        </SSC.Card>
+        </SSC.Cell>
     );
 };
 

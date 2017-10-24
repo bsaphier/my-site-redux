@@ -8,6 +8,7 @@
     },
     "root": true,
     "rules": {
+        "class-methods-use-this": "off",
         "no-warning-comments": "off",
         "id-length": "off",
         "react/jsx-pascal-case": "off",
