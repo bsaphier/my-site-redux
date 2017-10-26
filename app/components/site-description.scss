@@ -1,21 +1,19 @@
 
-.cContent {
-    // position: absolute;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
-    padding: 9px 15px 0;
-    // letter-spacing: initial;
-    line-height: 1.1rem;
+.content {
+    padding: 0 15px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 0;
     overflow: hidden;
-    .inlineLink {
-        cursor: pointer;
-        text-decoration: none;
-        font-weight: 600;
-        font-family: inherit;
-        color: inherit;
-        &:visited {
-            color: #2E0EBF;
-        }
+}
+
+.inlineLink {
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: inherit;
+    color: inherit;
+    &:visited {
+        color: #2E0EBF;
     }
 }

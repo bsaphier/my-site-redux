@@ -25,7 +25,7 @@ const About = (props) => {
     const cb = (m, r) => props.playDrone(250 + ((m.x + m.y) % 500));
     return (
         <SSC.PageContent>
-            <div className={s.topHalf}>
+            <div className={s.parallaxWrap}>
                 <div
                 className={props.droneOn ? `${s.droneBtn} ${s.clicked}` : s.droneBtn}
                 onClick={() => props.droneToggle(!props.droneOn)}>
@@ -39,9 +39,13 @@ const About = (props) => {
                 </SSC.Parallax>
             </div>
             <div className={s.bottomHalf}>
-                <SiteDescription />
-                <Cards.AboutMe />
-                <Cards.Skills />
+                <div className={s.staticWrap}>
+                    <SiteDescription />
+                </div>
+                <div className={s.cardWrap}>
+                    <Cards.AboutMe />
+                    <Cards.Projects />
+                </div>
             </div>
         </SSC.PageContent>
     );

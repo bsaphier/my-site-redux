@@ -1,6 +1,7 @@
 import React from 'react';
 import SSC from 'react-ssc';
 import s from './cards.scss';
+import Skills from './Skills.jsx';
 
 
 const socialMedia = [
@@ -16,13 +17,14 @@ const socialMedia = [
         name: 'Email',
         url: 'mailto:b.saphier@gmail.com'
     },
-    {
-        name: 'Stack Overflow',
-        url: 'http://stackoverflow.com/story/bsaphier'
-    }
+    // {
+    //     name: 'Stack Overflow',
+    //     url: 'http://stackoverflow.com/story/bsaphier'
+    // }
 ];
 
-const aboutMe = `I'm some kind of person that does stuff n things.`;
+const aboutMeBrief = `I am a developer that does stuff n things....`;    // ??? props not.. `I'm a developer with an eye for design and an ear for music.`;
+const aboutMeLong = `I am a developer with an eye for design and an ear for music. Blah blah I began my career as an audio engineerblah  turned software engineer blah blah blah blah....`;
 
 const handleClick = ($event) => {
     window.open($event.target.href);
@@ -35,6 +37,8 @@ const AboutMe = () => {
         <SSC.Card title={'About Me'} expandable>
             {(clicked) => (
                 <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
+                    <div className={s.contentBlock}>{clicked ? aboutMeLong : aboutMeBrief}</div>
+                    <Skills display={clicked} />
                     <div className={clicked ? `${s.linksWrap} ${s.clicked}` : s.linksWrap}>
                         {
                             socialMedia.map((link, i) => (
@@ -42,14 +46,12 @@ const AboutMe = () => {
                                     key={`${link.name}0${++i}`}
                                     className={clicked ? `${s.clicked} ${s.icon}` : s.icon}
                                     onClick={handleClick}
-                                    title={link.name}
                                     href={link.url}>
                                     {link.name}
                                 </a>
                             ))
                         }
                     </div>
-                    <span>{aboutMe}</span>
                 </div>
             )}
         </SSC.Card>

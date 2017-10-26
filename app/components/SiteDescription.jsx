@@ -13,9 +13,9 @@ const handleClick = ($event) => {
 
 const SiteDescription = () => {
     return (
-        <SSC.Cell>
-            <SSC.Title>{'About This Site'}</SSC.Title>
-                <div className={s.cContent}>
+        <SSC.Cell style={{ marginTop: 0 }}>
+            <SSC.Title>{'Welcome to my website!'}</SSC.Title>
+                <p className={s.content}>
                     The core of this website is built with
                     <a className={s.inlineLink} onClick={handleClick} href="https://reactjs.org/"> React</a> &
                     <a className={s.inlineLink} onClick={handleClick} href="http://redux.js.org/"> Redux</a>.
@@ -29,7 +29,7 @@ const SiteDescription = () => {
                     <a className={s.inlineLink} onClick={handleClick} href="https://github.com/chenglou/react-motion"> React-Motion</a>,
                     <a className={s.inlineLink} onClick={handleClick} href="https://webpack.js.org/"> Webpack</a>, and of course,
                     <a className={s.inlineLink} onClick={handleClick} href="https://babeljs.io/"> Babel</a>.
-                </div>
+                </p>
         </SSC.Cell>
     );
 };

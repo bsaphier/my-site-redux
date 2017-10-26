@@ -1,0 +1,36 @@
+
+.skillsContent {
+    height: 0px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .0s ease;
+    &.show {
+        pointer-events: all;
+        height: initial;
+        transition: opacity .618s ease-out;
+        opacity: 1;
+        .subTitle {
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 23px;
+            min-height: 38px;
+            padding: 9px 15px 0 0;
+        }
+    }
+    .skillWrap {
+        width: 100%;
+        min-height: 38px;
+        padding: 0 0 12px;
+        font-size: 1rem;
+        font-family: 'Raleway', sans-serif;
+        span {
+            font-family: inherit;
+        }
+        :first-child:before {
+            content: "";
+        }
+        :before {
+            content: ", ";
+        }
+    }
+}

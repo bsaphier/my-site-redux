@@ -1,26 +1,22 @@
 import React from 'react';
-import SSC from 'react-ssc';
-import s from './cards.scss';
+import s from './skills.scss';
 
 
 const skills = ['React', 'Angular', 'Node', 'Express'];
 
-const SKills = () => {
+const Skills = ({ display }) => {
     return (
-        <SSC.Card title={`Stuff I Like To Work With`}>
-            {(clicked) => (
-                <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
-                    <div className={s.skillWrap}>
-                        {skills.map((skill, i) => (
-                            <span key={skill + (+i)} className={clicked ? `${s.clicked} ${s.skill}` : s.skill}>
-                                {skill}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            )}
-        </SSC.Card>
+        <div className={display ? `${s.show} ${s.skillsContent}` : s.skillsContent}>
+            <div className={s.subTitle}>{'Tech I Like to Work With'}</div>
+            <div className={s.skillWrap}>
+                {skills.map((skill, i) => (
+                    <span key={skill + (+i)} className={s.skill}>
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
     );
 };
 
-export default SKills;
+export default Skills;
