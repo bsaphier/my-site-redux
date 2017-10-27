@@ -13,8 +13,8 @@ const handleClick = ($event) => {
 
 const SiteDescription = () => {
     return (
-        <SSC.Cell style={{ marginTop: 0 }}>
-            <SSC.Title>{'Welcome to my website!'}</SSC.Title>
+        <SSC.Cell>
+            <SSC.Title>{'WELCOME TO MY WEBSITE!'}</SSC.Title>
                 <p className={s.content}>
                     The core of this website is built with
                     <a className={s.inlineLink} onClick={handleClick} href="https://reactjs.org/"> React</a> &

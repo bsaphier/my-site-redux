@@ -1,3 +1,5 @@
+$darkPurp: #2E0EBF;
+$brightPurp: #6E4EFF;
 
 .cContent {
     box-sizing: border-box;
@@ -25,23 +27,12 @@
         font-family: inherit;
         color: inherit;
         &:visited {
-            color: #2E0EBF;
-        }
-    }
-    .skillWrap {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        .skill {
-            &.clicked {
-            }
+            color: $darkPurp;
         }
     }
     .contentBlock {
-        flex-grow: 0.62;
-        padding: 0 0 23px;
+        flex-grow: 0.8;
+        padding: 0 1px 16px;
         font-size: 1.3rem;
         line-height: 1.5rem;
         letter-spacing: 0.38px;
@@ -52,45 +43,52 @@
 .linksWrap {
     font-family: 'Raleway';
     box-sizing: border-box;
+    padding-bottom: 8px;
     color: rgba(0,0,0,0.38);
     &.clicked {
+        padding-bottom: 0;
     }
-    .icon {
+    .link {
         display: inline-block;
         cursor: pointer;
         font-family: inherit;
         text-decoration: none;
         text-transform: uppercase;
-        font-weight: 400;
         font-size: 0.9rem;
-        letter-spacing: 1.1px;
-        margin: 0 5px;
-        padding: 0 1px;
+        font-weight: 700;
+        letter-spacing: 0.9px;
+        margin: 0 8px;
+        padding: 3px 1px;
         line-height: 1rem;
-        color: rgba(0,0,0,.87);
-        text-shadow: #6E4EFF 0 1px 0.3px;
-        transition: font-weight .218s ease-in-out,
-                    text-shadow .218s ease-in-out,
+        color: $brightPurp;
+        background: linear-gradient(to bottom, transparent 94%, $brightPurp 94%) no-repeat;
+        background-size: 0% 100%;
+        transition: background-size 0.2s ease,
+                    font-weight .218s ease-in-out,
                     letter-spacing .218s ease-in-out;
         &:first-child {
-            margin: 0 5px 0 0;
+            padding-left: 0;
+            margin: 0 8px 0 0;
         }
         &:last-child {
-            margin: 0 0 0 5px;
+            padding-right: 0;
+            margin: 0 0 0 8px;
         }
         &:hover {
-            text-shadow: rgba(0,0,0,0) 0 1px 0.1px;
-            font-weight: 700;
-            letter-spacing: 0.9px;
-            color: #2E0EBF;
+            font-weight: 400;
+            letter-spacing: 1.1px;
+            color: rgba(0,0,0,.87);
+            background-size: 100% 100%;
         }
         &.clicked {
+            padding: 7px 1px;
             font-size: 1rem;
             text-align: left;
             &:hover {
-                font-weight: 700;
-                letter-spacing: 0.9px;
-                color: #2E0EBF;
+                font-weight: 400;
+                letter-spacing: 1.1px;
+                color: rgba(0,0,0,.87);
+                background-size: 100% 100%;
             }
         }
     }

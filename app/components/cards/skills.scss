@@ -7,21 +7,23 @@
     &.show {
         pointer-events: all;
         height: initial;
+        padding: 0 0 38px;
         transition: opacity .618s ease-out;
         opacity: 1;
         .subTitle {
             font-size: 17px;
             font-weight: bold;
             line-height: 23px;
-            min-height: 38px;
+            min-height: 33px;
             padding: 9px 15px 0 0;
         }
     }
     .skillWrap {
         width: 100%;
         min-height: 38px;
-        padding: 0 0 12px;
         font-size: 1rem;
+        line-height: 1.5rem;
+        padding: 0 1px;
         font-family: 'Raleway', sans-serif;
         span {
             font-family: inherit;
@@ -29,6 +31,9 @@
         :first-child:before {
             content: "";
         }
+        // :last-child:before {
+        //     content: " ";
+        // }
         :before {
             content: ", ";
         }

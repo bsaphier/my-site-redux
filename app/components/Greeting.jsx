@@ -52,7 +52,6 @@ class Greeting extends Component {
     }
 
     componentWillReceiveProps({ displayGreeting }) {
-        // const prevShowFooter1 = this.props.showFooter1;
         const prevDisplayGreeting = this.props.displayGreeting;
         const greetingIn = !prevDisplayGreeting && displayGreeting;
         const greetingOut = prevDisplayGreeting && !displayGreeting;
@@ -61,36 +60,33 @@ class Greeting extends Component {
         } else if (greetingOut) {
             this.setState(() => ({ motion: greetingMotion.exit }));
         }
-        // if (showFooter1 && !prevShowFooter1) {
-        //     /* footer moves in */
-        //     this.setState(() => ({ footer: true }));
-        // } else if (!showFooter1 && prevShowFooter1) {
-        //     /* footer moves out */
-        //     this.setState(() => ({ footer: false }));
-        // }
     }
 
     hover({ id, sound }) {
         this.props.playSound(sound);
-        this.setState(() => (
-            {
-                motion: {
-                    ...greetingMotion.enter,
-                    [id]: greetingMotion.exit[id]
+        if (this.props.displayGreeting) {
+            this.setState(() => (
+                {
+                    motion: {
+                        ...greetingMotion.enter,
+                        [id]: greetingMotion.exit[id]
+                    }
                 }
-            }
-        ));
+            ));
+        }
     }
 
     leave({ id }) {
-        this.setState(() => (
-            {
-                motion: {
-                    ...greetingMotion.enter,
-                    [id]: greetingMotion.enter[id]
+        if (this.props.displayGreeting) {
+            this.setState(() => (
+                {
+                    motion: {
+                        ...greetingMotion.enter,
+                        [id]: greetingMotion.enter[id]
+                    }
                 }
-            }
-        ));
+            ));
+        }
     }
 
     render() {

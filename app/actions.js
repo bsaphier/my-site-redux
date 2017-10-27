@@ -82,7 +82,7 @@ export const loadFonts = () => dispatch => {
 
 export const loadData = () => dispatch => {
     /* ~ currently simulating 1s of load time ~ */
-    setTimeout(() => dispatch(dataLoaded()), 1000);
+    setTimeout(() => dispatch(dataLoaded()), 100);
 };
 
 

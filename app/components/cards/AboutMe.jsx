@@ -23,7 +23,7 @@ const socialMedia = [
     // }
 ];
 
-const aboutMeBrief = `I am a developer that does stuff n things....`;    // ??? props not.. `I'm a developer with an eye for design and an ear for music.`;
+const aboutMeBrief = `I am a developer that does stuff n things....`;    // ??? probs not.. `I'm a developer with an eye for design and an ear for music.`;
 const aboutMeLong = `I am a developer with an eye for design and an ear for music. Blah blah I began my career as an audio engineerblah  turned software engineer blah blah blah blah....`;
 
 const handleClick = ($event) => {
@@ -34,7 +34,7 @@ const handleClick = ($event) => {
 
 const AboutMe = () => {
     return (
-        <SSC.Card title={'About Me'} expandable>
+        <SSC.Card style={{flexGrow: 1.62}} title={'About Me'} expandable>
             {(clicked) => (
                 <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
                     <div className={s.contentBlock}>{clicked ? aboutMeLong : aboutMeBrief}</div>
@@ -44,7 +44,7 @@ const AboutMe = () => {
                             socialMedia.map((link, i) => (
                                 <a
                                     key={`${link.name}0${++i}`}
-                                    className={clicked ? `${s.clicked} ${s.icon}` : s.icon}
+                                    className={clicked ? `${s.clicked} ${s.link}` : s.link}
                                     onClick={handleClick}
                                     href={link.url}>
                                     {link.name}
