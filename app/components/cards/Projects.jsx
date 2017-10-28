@@ -12,9 +12,9 @@ const handleClick = ($event) => {
 const Projects = () => {
     return (
         <SSC.Card title={'My Projects'}>
-            {(clicked) => (
-                <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
-                    <span>{'Projects...'}</span>
+            {() => (
+                <div className={s.cContent}>
+                    <div className={s.contentBlock}>{'Projects...'}</div>
                 </div>
             )}
         </SSC.Card>

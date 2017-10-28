@@ -11,8 +11,10 @@ $brightPurp: #6E4EFF;
     margin: 15px;
     padding: 3px 16px 0;
     outline: none;
-    font-weight: 200;
-    font-family: 'Raleway', sans-serif;
+    opacity: 0.7;
+    font-weight: 400;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     line-height: 28px;
     letter-spacing: 0.6px;
@@ -25,14 +27,17 @@ $brightPurp: #6E4EFF;
     background: transparent;
     cursor: pointer;
     transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 400ms ease-out,
                 background 200ms cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
     &:active {
         box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
                     rgba(0, 0, 0, 0.12) 0px 1px 10px 0px,
                     rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
     }
     &:hover {
+        opacity: 1;
+        color: $brightPurp;
         box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
                     rgba(0, 0, 0, 0.12) 0px 3px 1px -2px,
                     rgba(0, 0, 0, 0.2)  0px 1px 5px 0px;
@@ -55,7 +60,6 @@ $brightPurp: #6E4EFF;
 .horiHalf {
     box-sizing: border-box;
     width: 100%;
-    height: 50%;
     overflow: hidden;
 }
 
@@ -87,12 +91,13 @@ $brightPurp: #6E4EFF;
 }
 
 .cardWrap {
-    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    // box-sizing: border-box;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     padding: 15px 0;
     width: 100%;
-    height: 62%;
+    min-height: 50%;
 }

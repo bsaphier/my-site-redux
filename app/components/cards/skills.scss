@@ -1,5 +1,6 @@
 
 .skillsContent {
+    font-family: inherit;
     height: 0px;
     pointer-events: none;
     opacity: 0;
@@ -11,29 +12,30 @@
         transition: opacity .618s ease-out;
         opacity: 1;
         .subTitle {
+            font-family: inherit;
             font-size: 17px;
             font-weight: bold;
             line-height: 23px;
-            min-height: 33px;
-            padding: 9px 15px 0 0;
+            min-height: 38px;
+            padding: 12px 15px 0 0;
         }
     }
     .skillWrap {
+        font-family: 'Lekton', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.4rem;
+        letter-spacing: 0.38px;
+        color: #555;
+        padding: 0 1px;
         width: 100%;
         min-height: 38px;
-        font-size: 1rem;
-        line-height: 1.5rem;
-        padding: 0 1px;
-        font-family: 'Raleway', sans-serif;
         span {
             font-family: inherit;
+            letter-spacing: 0.38px;
         }
         :first-child:before {
             content: "";
         }
-        // :last-child:before {
-        //     content: " ";
-        // }
         :before {
             content: ", ";
         }

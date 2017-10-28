@@ -1,18 +1,25 @@
-$darkPurp: #2E0EBF;
+$darkPurp: rgb(112, 99, 185);
 $brightPurp: #6E4EFF;
 
+
+.customTitle {
+    font-family: 'Poppins', sans-serif;
+}
 .content {
-    padding: 0 16px 8px;
+    font-family: 'Lekton', sans-serif;
+    font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
+    color: #555;
     margin: 0;
+    padding: 0 16px 8px;
     overflow: hidden;
 }
 
 .inlineLink {
     cursor: pointer;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 700;
     font-family: inherit;
     color: inherit;
     &:visited {
