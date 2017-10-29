@@ -6,7 +6,7 @@ import ProjectsList from './ProjectsList.jsx';
 
 const Projects = () => {
     return (
-        <SSC.Card title={'My Projects'}>
+        <SSC.Card title={'My Projects'} noFoot>
             {() => (
                 <div className={s.cContent}>
                     <div className={s.contentBlock}>

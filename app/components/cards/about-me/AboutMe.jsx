@@ -19,8 +19,8 @@ const socialMedia = [
     }
 ];
 
-const aboutMeBrief = `I am a developer that does stuff n things....`;
-const aboutMeLong = `I am a developer with an eye for design and an ear for music. Blah blah I began my career as an audio engineer blah turned software engineer blah blah blah blah....`;
+const aboutMeBrief = `I am a developer who loves solving creative challenges...`; // I am a developer with an eye for design and an ear for music. 
+const aboutMeLong = `I am a developer who loves solving creative challenges. I came from a background in audio engineering and sound design. Now I enjoy discovering experimental ways methods of utilizing music through computer code.`;
 
 const handleClick = ($event) => {
     window.open($event.target.href); // TODO: is it safe to open up a new tab this way?
