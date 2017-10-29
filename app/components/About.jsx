@@ -5,17 +5,20 @@ import * as Cards from './cards';
 import SiteDescription from './SiteDescription.jsx';
 import s from './about.scss';
 import * as actionCreators from '../actions';
+import layer0 from '../bin/images/sot0.svg';
+import layer1 from '../bin/images/sot1.svg';
+import layer2 from '../bin/images/sot2.svg';
 
 
 const plaxLayers = [
     {
-        svg: '/bin/images/sot0.svg',
+        svg: layer0,
         name: 'layer0'
     }, {
-        svg: '/bin/images/sot1.svg',
+        svg: layer1,
         name: 'layer1'
     }, {
-        svg: '/bin/images/sot2.svg',
+        svg: layer2,
         name: 'layer2'
     }
 ];

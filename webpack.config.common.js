@@ -24,6 +24,14 @@ module.exports = {
                     plugins: [require('babel-plugin-transform-object-rest-spread')]
                 }
             }
+        }, {
+            test: /\.(png|jpg|svg)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {}
+                }
+            ]
         }]
     }
 };
