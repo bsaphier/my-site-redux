@@ -13,7 +13,7 @@ const handleClick = ($event) => {
 
 const SiteDescription = () => {
     return (
-        <SSC.Cell>
+        <SSC.Cell style={{height: '100%'}}>
             <SSC.Title className={s.customTitle} style={{fontSize: '28px'}}>{'WELCOME TO MY WEBSITE!'}</SSC.Title>
                 <p className={s.content}>
                     The core of this website is built with

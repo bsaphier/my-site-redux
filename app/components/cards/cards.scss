@@ -19,7 +19,6 @@ $brightPurp: #6E4EFF;
     &.clicked {
         position: relative;
         padding: 0;
-        // max-width: 100%;
     }
     .inlineLink {
         cursor: pointer;
@@ -32,8 +31,9 @@ $brightPurp: #6E4EFF;
         }
     }
     .contentBlock {
-        flex-grow: 0.8;
-        padding: 0 1px 31px;
+        position: relative;
+        flex-grow: 0.95;
+        padding: 0 1px 0;
         font-family: 'Lekton', sans-serif;
         font-size: 1rem;
         line-height: 1.4rem;

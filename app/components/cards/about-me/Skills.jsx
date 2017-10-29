@@ -9,11 +9,13 @@ const Skills = ({ display }) => {
         <div className={display ? `${s.show} ${s.skillsContent}` : s.skillsContent}>
             <div className={s.subTitle}>{'Some Tech I Like to Work With'}</div>
             <div className={s.skillWrap}>
-                {skills.map((skill, i) => (
-                    <span key={skill + (+i)} className={s.skill}>
-                        {skill}
-                    </span>
-                ))}
+                {
+                    skills.map((skill, i) => (
+                        <span key={skill + (+i)} className={s.skill}>
+                            {skill}
+                        </span>
+                    ))
+                }
             </div>
         </div>
     );

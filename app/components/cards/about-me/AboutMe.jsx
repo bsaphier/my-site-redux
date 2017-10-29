@@ -1,6 +1,6 @@
 import React from 'react';
 import SSC from 'react-ssc';
-import s from './cards.scss';
+import s from '../cards.scss';
 import Skills from './Skills.jsx';
 
 
@@ -16,25 +16,21 @@ const socialMedia = [
     {
         name: 'Email',
         url: 'mailto:b.saphier@gmail.com'
-    },
-    // {
-    //     name: 'Stack Overflow',
-    //     url: 'http://stackoverflow.com/story/bsaphier'
-    // }
+    }
 ];
 
-const aboutMeBrief = `I am a developer that does stuff n things....`;    // ??? probs not.. `I'm a developer with an eye for design and an ear for music.`;
-const aboutMeLong = `I am a developer with an eye for design and an ear for music. Blah blah I began my career as an audio engineerblah  turned software engineer blah blah blah blah....`;
+const aboutMeBrief = `I am a developer that does stuff n things....`;
+const aboutMeLong = `I am a developer with an eye for design and an ear for music. Blah blah I began my career as an audio engineer blah turned software engineer blah blah blah blah....`;
 
 const handleClick = ($event) => {
-    window.open($event.target.href);
+    window.open($event.target.href); // TODO: is it safe to open up a new tab this way?
     $event.preventDefault();
     $event.stopPropagation();
 };
 
 const AboutMe = () => {
     return (
-        <SSC.Card style={{flexGrow: 1.62}} title={'About Me'} expandable>
+        <SSC.Card title={'About Me'} expandable>
             {(clicked) => (
                 <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
                     <div className={s.contentBlock}>{clicked ? aboutMeLong : aboutMeBrief}</div>

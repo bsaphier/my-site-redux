@@ -1,0 +1,38 @@
+.pTitleWrap {
+    font-family: inherit;
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .pWrap {
+        display: inline;
+        font-family: inherit;
+        padding: 0 1px 5px;
+    }
+    // :first-child {
+    //     padding: 0 5px 5px 0;
+    // }
+    // :last-child {
+    //     padding: 0 0 5px 5px;
+    // }
+}
+
+.pDetailWrap {
+    font-family: inherit;
+    padding: 15px 0 0;
+    .pDetail {
+        width: 100%;
+        color: #888;
+        font-family: inherit;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1rem;
+        letter-spacing: 0.38px;
+        text-align: right;
+        opacity: 0;
+        transition: opacity .218s ease-in;
+        &.view {
+            opacity: 1;
+        }
+    }
+}
