@@ -13,9 +13,6 @@ $brightPurp: #6E4EFF;
     align-content: stretch;
     width: 100%;
     padding: 0 15px;
-    letter-spacing: initial;
-    line-height: 1.1rem;
-    overflow: hidden;
     &.clicked {
         position: relative;
         padding: 0;
@@ -35,9 +32,9 @@ $brightPurp: #6E4EFF;
         flex-grow: 0.95;
         padding: 0 1px 0;
         font-family: 'Lekton', sans-serif;
-        font-size: 1rem;
-        line-height: 1.4rem;
-        letter-spacing: 0.38px;
+        font-size: 0.95rem;
+        line-height: 1.25rem;
+        // letter-spacing: 0.38px;
         color: #444;
     }
 }
@@ -47,7 +44,9 @@ $brightPurp: #6E4EFF;
     box-sizing: border-box;
     padding-bottom: 15px;
     color: #444;
+    margin: 0;
     &.clicked {
+        margin-left: auto;
         padding-bottom: 0;
     }
     .link {
@@ -78,7 +77,7 @@ $brightPurp: #6E4EFF;
         }
         &:hover {
             font-weight: 400;
-            letter-spacing: 1.4px;
+            letter-spacing: 1.1px;
             color: #444;
             background-size: 100% 100%;
         }
@@ -88,7 +87,7 @@ $brightPurp: #6E4EFF;
             text-align: left;
             &:hover {
                 font-weight: 400;
-                letter-spacing: 1.4px;
+                letter-spacing: 1.1px;
                 color: #444;
                 background-size: 100% 100%;
             }

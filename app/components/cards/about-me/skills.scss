@@ -23,15 +23,15 @@
     .skillWrap {
         font-family: 'Lekton', sans-serif;
         font-size: 0.95rem;
-        line-height: 1.4rem;
-        letter-spacing: 0.38px;
+        line-height: 1.25rem;
+        // letter-spacing: 0.38px;
         color: #444;
         padding: 0 1px;
         width: 100%;
         min-height: 38px;
         span {
             font-family: inherit;
-            letter-spacing: 0.38px;
+            // letter-spacing: 0.38px;
         }
         :first-child:before {
             content: "";
