@@ -158,8 +158,8 @@
 ._2f7Mpi0mKlPvfn-gQdLaw7 {
   font-family: 'Lekton', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.4rem;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
   color: #444;
   margin: 0;
   padding: 0 16px 0; }
@@ -357,8 +357,8 @@
     opacity: 0.01; }
   ._8BA1kY1QD3q2rxKtbbXae ._2nQeCS-HwFMOH-MqnUVqWW {
     margin: auto;
-    width: 5rem;
-    height: 5rem; }
+    width: 90px;
+    height: 90px; }
     ._8BA1kY1QD3q2rxKtbbXae ._2nQeCS-HwFMOH-MqnUVqWW {
       transform: rotate(45deg); }
 
@@ -371,4 +371,26 @@
   padding: 10px; }
   ._3t4gKACRMn-F6zjmPjh2-j * {
     margin: 3px 0 0 3px; }
+@media screen and (max-width: 499px) {
+  html {
+    font-size: 8px; } }
 
+@media screen and (max-width: 899px) and (min-width: 500px) {
+  html {
+    font-size: 10px; } }
+
+@media screen and (max-width: 1299px) and (min-width: 900px) {
+  html {
+    font-size: 13px; } }
+
+@media screen and (min-width: 1300px) {
+  html {
+    font-size: 18px; } }
+
+@media only screen and (min-device-width: 299px) and (max-device-width: 749px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  html {
+    font-size: 26px; } }
+
+@media only screen and (min-device-width: 299px) and (max-device-width: 749px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  html {
+    font-size: 10px; } }

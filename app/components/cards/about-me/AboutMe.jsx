@@ -19,7 +19,7 @@ const socialMedia = [
     }
 ];
 
-const aboutMeBrief = `I am a developer who loves solving creative...`; // I am a developer with an eye for design and an ear for music. 
+const aboutMeBrief = `I am a developer in NYC, a lover of sound synthesis, and occasional electronic-musician...`; // I am a developer with an eye for design and an ear for music. 
 const aboutMeLong = `I am a developer who loves solving creative challenges. I came from a background in audio engineering and sound design. Now I enjoy discovering experimental methods of utilizing music through computer code.`;
 
 const handleClick = ($event) => {

@@ -1,1 +1,24 @@
+@import './mixins.scss';
 @import url('https://fonts.googleapis.com/css?family=Lekton:400,400i,700|Poppins:200,300,400,500,700');
+
+
+html {
+  @include xs {
+    font-size: 8px;
+  }
+  @include sm {
+    font-size: 10px;
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 18px;
+  }
+  @include mobile-portrait {
+    font-size: 26px;
+  };
+  @include mobile-landscape {
+    font-size: 10px;
+  };
+}

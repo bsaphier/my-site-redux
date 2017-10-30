@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import store from './store';
 
-import './styles.scss';
 import 'react-ssc/dist/lib.css';
+import './styles.scss';
 
 
 render(
