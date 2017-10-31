@@ -86,16 +86,17 @@ $brightPurp: #6E4EFF;
     box-sizing: border-box;
     padding: 15px 0 0;
     width: 100%;
-    height: 45%;
+    // max-height: 45%;
 }
 
 .cardWrap {
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
     position: relative;
+    bottom: 0;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
-    height: 55%;
+    min-height: 55%;
 }

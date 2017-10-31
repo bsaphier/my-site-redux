@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './app/main.jsx',
+    entry: './app/index.jsx',
     output: {
         path: path.resolve(__dirname, 'docs'),
         filename: 'app.js'

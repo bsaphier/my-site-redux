@@ -4,16 +4,28 @@
 
 html {
   @include xs {
+    font-size: 10px;
+  }
+  @include xs-thin {
     font-size: 8px;
   }
   @include sm {
-    font-size: 10px;
+    font-size: 12px;
+  }
+  @include sm-thin {
+    font-size: 8px;
   }
   @include md {
-    font-size: 13px;
+    font-size: 14px;
+  }
+  @include md-thin {
+    font-size: 12px;
   }
   @include lg {
     font-size: 18px;
+  }
+  @include lg-thin {
+    font-size: 14px;
   }
   @include mobile-portrait {
     font-size: 26px;
