@@ -38,7 +38,7 @@ export const getView = (_window) => dispatch => {
                 width: _window.innerWidth,
                 height: _window.innerHeight
             },
-            orientation: _window.screen.orientation.type
+            orientation: (_window.innerWidth > _window.innerHeight) ? 'landscape' : 'portrait'
         }
     ));
 };
