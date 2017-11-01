@@ -1,4 +1,5 @@
 import { actionCreators as audioActionCreators } from 'react-redux-webaudio';
+import WebFont from 'webfontloader';
 import * as actionTypes from './constants';
 import { soundCreator } from './utils';
 
@@ -76,13 +77,17 @@ export const fontsLoaded = () => (
 );
 
 export const loadFonts = () => dispatch => {
-    /* ~ currently simulating 100ms of load time ~ */
-    setTimeout(() => dispatch(fontsLoaded()), 100);
+    WebFont.load({
+        google: {
+            families: ['Lekton:400,400i,700', 'Poppins:200,300,400,500,700']
+        },
+        active: () => dispatch(fontsLoaded())
+    });
 };
 
 export const loadData = () => dispatch => {
-    /* ~ currently simulating 1s of load time ~ */
-    setTimeout(() => dispatch(dataLoaded()), 100);
+    /* ~ simulating load time ~ */
+    setTimeout(() => dispatch(dataLoaded()), 500);
 };
 
 
