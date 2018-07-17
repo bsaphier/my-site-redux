@@ -16,12 +16,14 @@ class App extends Component {
         this.props.loadData();
         this.props.loadFonts();
         this.props.getView(window);
+
         window.addEventListener('scroll', this.handleScroll);
         window.addEventListener('resize', this.props.onResize);
     }
 
     componentDidUpdate() {
         const { loading, dataDidLoad, fontsDidLoad } = this.props;
+
         if (loading && dataDidLoad && fontsDidLoad) {
             this.props.onLoaded();
         }
@@ -33,17 +35,16 @@ class App extends Component {
     }
 
     handleScroll() {
-        this.props.onScroll(
-            {
-                x: window.scrollX,
-                y: window.scrollY
-            }
-        );
+        this.props.onScroll({
+            x: window.scrollX,
+            y: window.scrollY
+        });
     }
 
     render() {
-        const { loading } = this.props;
-        return loading ? <Loader /> : <Main />;
+        return this.props.loading ?
+            <Loader /> :
+            <Main />;
     }
 }
 

@@ -1,5 +1,8 @@
 import { presets, spring } from 'react-motion';
 
+const { stiff, wobbly, gentle } = presets;
+
+
 export const greetingMotion = {
     initial: {
         top:    -42,
@@ -13,31 +16,38 @@ export const greetingMotion = {
         title7: 1
     },
     exit: {
-        top:    spring(-42, presets.stiff),
-        title0: spring(3, presets.wobbly),
-        title1: spring(2, presets.wobbly),
-        title2: spring(8, presets.wobbly),
-        title3: spring(2, presets.wobbly),
-        title4: spring(1, presets.wobbly),
-        title5: spring(2, presets.wobbly),
-        title6: spring(1, presets.wobbly),
-        title7: spring(2, presets.wobbly)
+        top:    spring(-42, stiff),
+        title0: spring(3, wobbly),
+        title1: spring(2, wobbly),
+        title2: spring(8, wobbly),
+        title3: spring(2, wobbly),
+        title4: spring(1, wobbly),
+        title5: spring(2, wobbly),
+        title6: spring(1, wobbly),
+        title7: spring(2, wobbly)
     },
     enter: {
-        top:    spring(42, presets.stiff),
-        title0: spring(0.65, presets.wobbly),
-        title1: spring(0.92, presets.gentle),
-        title2: spring(1.45, presets.wobbly),
-        title3: spring(-0.83, presets.gentle),
-        title4: spring(-0.02, presets.gentle),
-        title5: spring(-0.05, presets.gentle),
-        title6: spring(-0.015, presets.gentle),
-        title7: spring(0.4, presets.gentle)
+        top:    spring(42, stiff),
+        title0: spring(0.65, wobbly),
+        title1: spring(0.92, gentle),
+        title2: spring(1.45, wobbly),
+        title3: spring(-0.83, gentle),
+        title4: spring(-0.02, gentle),
+        title5: spring(-0.05, gentle),
+        title6: spring(-0.015, gentle),
+        title7: spring(0.4, gentle)
     }
 };
 
 export const btnHoverMotion = {
-    initial: {},
-    mouseOver: {},
-    mouseLeave: {}
-}
+    scale: {
+        initial: 1,
+        mouseOver: spring(1.2, stiff),
+        mouseLeave: spring(1, wobbly)
+    },
+    translate: {
+        initial: 0,
+        mouseOver: spring(-15, stiff),
+        mouseLeave: spring(0, wobbly)
+    }
+};
