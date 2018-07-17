@@ -10,14 +10,16 @@ import Greeting from './Greeting.jsx';
 
 class Main extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        const { height, scrollPos } = nextProps;
+    componentDidUpdate(prevProps) {
+        const { height, scrollPos } = this.props;
         const nextScrollY = scrollPos.y;
         const greetingBreak = height / 4;
-        if (nextScrollY >= greetingBreak && this.props.scrollPos.y < greetingBreak) {
+
+        if (nextScrollY >= greetingBreak && prevProps.scrollPos.y < greetingBreak) {
             this.props.toggleGreeting(false);
-        }
-        if (nextScrollY <= greetingBreak && this.props.scrollPos.y > greetingBreak) {
+        }      
+        
+        if (nextScrollY <= greetingBreak && prevProps.scrollPos.y > greetingBreak) {
             this.props.toggleGreeting(true);
         }
     }

@@ -43,49 +43,50 @@ class Greeting extends Component {
         this.state = {
             motion: greetingMotion.initial
         };
-        this.hover = this.hover.bind(this);
-        this.leave = this.leave.bind(this);
     }
 
     componentDidMount() {
         this.props.toggleGreeting(true);
     }
 
-    componentWillReceiveProps({ displayGreeting }) {
-        const prevDisplayGreeting = this.props.displayGreeting;
+    componentDidUpdate(prevProps) {
+        const { displayGreeting } = this.props;
+        const prevDisplayGreeting = prevProps.displayGreeting;
         const greetingIn = !prevDisplayGreeting && displayGreeting;
         const greetingOut = prevDisplayGreeting && !displayGreeting;
+
         if (greetingIn) {
-            this.setState(() => ({ motion: greetingMotion.enter }));
+            this.setGreetingPos(greetingMotion.enter);
         } else if (greetingOut) {
-            this.setState(() => ({ motion: greetingMotion.exit }));
+            this.setGreetingPos(greetingMotion.exit);
         }
     }
 
-    hover({ id, sound }) {
+    setGreetingPos = motion => {
+        this.setState({ motion });
+    }
+
+    hover = ({ id, sound }) => {
         this.props.playSound(sound);
+        
         if (this.props.displayGreeting) {
-            this.setState(() => (
-                {
-                    motion: {
-                        ...greetingMotion.enter,
-                        [id]: greetingMotion.exit[id]
-                    }
+            this.setState(() => ({
+                motion: {
+                    ...greetingMotion.enter,
+                    [id]: greetingMotion.exit[id]
                 }
-            ));
+            }));
         }
     }
 
-    leave({ id }) {
+    leave = ({ id }) => {
         if (this.props.displayGreeting) {
-            this.setState(() => (
-                {
-                    motion: {
-                        ...greetingMotion.enter,
-                        [id]: greetingMotion.enter[id]
-                    }
+            this.setState(() => ({
+                motion: {
+                    ...greetingMotion.enter,
+                    [id]: greetingMotion.enter[id]
                 }
-            ));
+            }));
         }
     }
 

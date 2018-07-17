@@ -20,8 +20,8 @@ class App extends Component {
         window.addEventListener('resize', this.props.onResize);
     }
 
-    componentWillReceiveProps(nextProps) {
-        const { loading, dataDidLoad, fontsDidLoad } = nextProps;
+    componentDidUpdate() {
+        const { loading, dataDidLoad, fontsDidLoad } = this.props;
         if (loading && dataDidLoad && fontsDidLoad) {
             this.props.onLoaded();
         }
