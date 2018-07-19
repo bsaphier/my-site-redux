@@ -40,6 +40,7 @@ const greetingMessage = [
 class Greeting extends Component {
     constructor(props) {
         super(props);
+        this.pageRef = React.createRef();
         this.state = {
             motion: greetingMotion.initial
         };
@@ -68,7 +69,7 @@ class Greeting extends Component {
 
     hover = ({ id, sound }) => {
         this.props.playSound(sound);
-        
+
         if (this.props.displayGreeting) {
             this.setState(() => ({
                 motion: {
@@ -88,6 +89,18 @@ class Greeting extends Component {
                 }
             }));
         }
+    }
+
+    handleClick = () => {
+        // scroll to the next section
+        this.pageRef.current
+            .parentNode     // this page
+            .parentNode     // page container
+            .nextSibling    // the next section
+            .scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
     }
 
     render() {
@@ -114,9 +127,11 @@ class Greeting extends Component {
                         </div>
                     )}
                 </Motion>
-                <div className={this.props.displayGreeting ? `${s.footWrap} ${s.hueShift}` : s.footWrap}>
-                    <GreetingFooter display={this.props.showFooter1} />
-                    <GreetingFooter display={this.props.showFooter2} />
+                <div
+                    className={this.props.displayGreeting ? `${s.footWrap} ${s.hueShift}` : s.footWrap}
+                    ref={this.pageRef}>
+                    <GreetingFooter display={this.props.showFooter1} onClick={this.handleClick} />
+                    <GreetingFooter display={this.props.showFooter2} onClick={this.handleClick} />
                 </div>
             </SSC.PageContent>
         );

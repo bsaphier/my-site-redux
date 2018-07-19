@@ -4,7 +4,6 @@ import { btnHoverMotion } from '../utils';
 import s from './greeting-footer.scss';
 
 
-
 class GreetingFooter extends Component {
 
     constructor(props) {
@@ -15,39 +14,47 @@ class GreetingFooter extends Component {
         };
     }
 
-    handleMouseOver = () => {
+    hover = () => {
         this.setState({
             scale: btnHoverMotion.scale.mouseOver,
             translate: btnHoverMotion.translate.mouseOver
         });
     }
 
-    handleMouseLeave = () => {
+    leave = () => {
         this.setState({
             scale: btnHoverMotion.scale.mouseLeave,
             translate: btnHoverMotion.translate.mouseLeave
         });
     }
 
-    handleClick = (e) => {
-        e.currentTarget.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-
     render() {
-        const { content, display } = this.props;
+        const { content, display, onClick: handleClick } = this.props;
         return (
             <Motion style={this.state}>
                 {({ scale, translate }) => (
                     <div
                         className={display ? s.greetingFooter : `${s.greetingFooter} ${s.hide}`}
-                        onMouseOver={this.handleMouseOver}
-                        onMouseLeave={this.handleMouseLeave}
-                        onMouseUp={this.handleMouseOver}
-                        onMouseDown={this.handleMouseLeave}
-                        onClick={this.handleClick}
+                        onMouseOver={this.hover}
+                        onMouseLeave={this.leave}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            this.leave();
+                            handleClick();
+                        }}
+                        onTouchStart={(e) => {
+                            e.preventDefault();
+                            this.hover();
+                        }}
+                        onTouchCancel={(e) => {
+                            e.preventDefault();
+                            this.leave();
+                        }}
+                        onTouchEnd={(e) => {
+                            e.preventDefault();
+                            this.leave();
+                            handleClick();
+                        }}
                         style={{transform: `
                             scale(${scale}) translateY(${translate}%)
                         `}}>

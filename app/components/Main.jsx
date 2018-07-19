@@ -17,8 +17,8 @@ class Main extends Component {
 
         if (nextScrollY >= greetingBreak && prevProps.scrollPos.y < greetingBreak) {
             this.props.toggleGreeting(false);
-        }      
-        
+        }
+
         if (nextScrollY <= greetingBreak && prevProps.scrollPos.y > greetingBreak) {
             this.props.toggleGreeting(true);
         }

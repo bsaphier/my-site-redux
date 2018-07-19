@@ -42,12 +42,12 @@ export const greetingMotion = {
 export const btnHoverMotion = {
     scale: {
         initial: 1,
-        mouseOver: spring(1.2, stiff),
-        mouseLeave: spring(1, wobbly)
+        mouseOver: spring(1.3, wobbly),
+        mouseLeave: spring(1, gentle)
     },
     translate: {
         initial: 0,
-        mouseOver: spring(-15, stiff),
-        mouseLeave: spring(0, wobbly)
+        mouseOver: spring(-13, stiff),
+        mouseLeave: spring(0, gentle)
     }
 };

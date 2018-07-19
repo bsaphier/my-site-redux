@@ -7,11 +7,6 @@ import Loader from './Loader.jsx';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.handleScroll = this.handleScroll.bind(this);
-    }
-
     componentDidMount() {
         this.props.loadData();
         this.props.loadFonts();
@@ -34,7 +29,7 @@ class App extends Component {
         window.removeEventListener('resize', this.props.onResize);
     }
 
-    handleScroll() {
+    handleScroll = () => {
         this.props.onScroll({
             x: window.scrollX,
             y: window.scrollY
