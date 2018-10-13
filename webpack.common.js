@@ -1,4 +1,7 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
   entry: './app/index.jsx',
@@ -30,5 +33,15 @@ module.exports = {
         options: {}
       }]
     }]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['docs'], {
+      exclude: ['CNAME'],
+    }),
+    new HtmlWebpackPlugin({
+      cache: true,
+      template: './index.template.html',
+      title: 'Ben Saphier',
+    })
+  ]
 };
