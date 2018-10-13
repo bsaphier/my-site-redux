@@ -1,25 +1,19 @@
 {
-  "extends": [ "eslint:recommended", "plugin:react/recommended" ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
+    "extends": "fullstack",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "root": true,
+    "rules": {
+        "class-methods-use-this": "off",
+        "no-warning-comments": "off",
+        "id-length": "off",
+        "react/jsx-pascal-case": "off",
+        "semi": [ "warn", "always" ],
+        "react/prop-types": "off",
+        "react/display-name": "off"
     }
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
-  },
-  "rules": {
-    "no-console": 0,
-    "no-unused-vars": 1,
-    "semi": [ 1, "always" ],
-    "quotes": [ "warn", "single" ],
-    "guard-for-in": "off",
-    "require-await": 1,
-    "react/prop-types": "off",
-    "react/display-name": "off",
-    "class-methods-use-this": "off"
-  }
 }

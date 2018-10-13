@@ -34,8 +34,11 @@ const About = (props) => {
                 onClick={() => props.droneToggle(!props.droneOn)}>
                     {'Sound is ' + (props.droneOn ? 'On' : 'Off')}
                 </div>
-                <SSC.Parallax layers={plaxLayers} callback={props.droneOn ? cb : (() => {return;})}>
-                    { layer => <img className={s.bgLayer} src={layer.svg} /> }
+                <SSC.Parallax layers={plaxLayers} callback={props.droneOn ? cb : () => {}}>
+                    {
+                        layer =>
+                            <img className={s.bgLayer} src={layer.svg} />
+                    }
                 </SSC.Parallax>
             </div>
             <div className={`${s.bottom} ${s.horiHalf}`}>
