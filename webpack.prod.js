@@ -12,8 +12,7 @@ module.exports = merge(common, {
         styles: {
           name: 'styles',
           test: /\.css$/,
-          chunks: 'all',
-          enforce: true
+          chunks: 'all'
         }
       }
     },
@@ -42,5 +41,5 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'main.css',
     })
-  ],
+  ]
 });
