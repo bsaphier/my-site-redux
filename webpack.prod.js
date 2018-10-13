@@ -33,7 +33,14 @@ module.exports = merge(common, {
       test: /\.scss$/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            importLoaders: 1,
+            localIdentName: '[local]--[name]__[hash:base64:5]'
+          }
+        },
         'sass-loader'
       ]
     }]
