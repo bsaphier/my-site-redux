@@ -12,8 +12,7 @@ module.exports = merge(common, {
         styles: {
           name: 'styles',
           test: /\.css$/,
-          chunks: 'all',
-          enforce: true
+          chunks: 'all'
         }
       }
     },
@@ -33,7 +32,14 @@ module.exports = merge(common, {
       test: /\.scss$/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            camelCase: true,
+            modules: true,
+            localIdentName: '[local]--[name]__[hash:base64:5]'
+          }
+        },
         'sass-loader'
       ]
     }]
