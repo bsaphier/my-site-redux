@@ -6,22 +6,22 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       styles: {
-  //         name: 'styles',
-  //         test: /\.css$/,
-  //         chunks: 'all',
-  //         enforce: true
-  //       }
-  //     }
-  //   },
-  //   minimizer: [
-  //     new MinifyPlugin(),
-  //     new OptimizeCSSAssetsPlugin({})
-  //   ]
-  // },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'main',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    },
+    minimizer: [
+      new MinifyPlugin(),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   module: {
     rules: [{
       test: /\.css$/,
