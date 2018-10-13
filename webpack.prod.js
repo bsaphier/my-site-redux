@@ -12,7 +12,8 @@ module.exports = merge(common, {
         styles: {
           name: 'styles',
           test: /\.css$/,
-          chunks: 'all'
+          chunks: 'all',
+          enforce: true
         }
       }
     },
