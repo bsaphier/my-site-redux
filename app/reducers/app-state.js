@@ -1,6 +1,5 @@
 import * as actionTypes from '../constants';
 
-
 const INIT_STATE = {
     loading: true,
     dataDidLoad: false,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RRWAEngine } from 'react-redux-webaudio';
 import SSC from 'react-ssc';
+import store from '../store';
 import * as actionCreators from '../actions';
 import About from './About.jsx';
 import Footer from './Footer.jsx';
@@ -27,7 +28,7 @@ class Main extends Component {
     render() {
         return (
             <SSC.Container>
-                <RRWAEngine />
+                <RRWAEngine store={store} />
                 <SSC.Page style={{ paddingTop: 0 }}>
                     <Greeting />
                 </SSC.Page>

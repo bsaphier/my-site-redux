@@ -35,8 +35,9 @@ module.exports = {
     }]
   },
   plugins: [
-    new CleanWebpackPlugin(['docs'], {
-      exclude: ['CNAME'],
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['!CNAME'],
+      cleanAfterEveryBuildPatterns: ['!CNAME'],
     }),
     new HtmlWebpackPlugin({
       cache: true,
