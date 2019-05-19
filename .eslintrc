@@ -16,16 +16,24 @@
     "es6": true
   },
   "rules": {
-    "no-console": 0,
-    "no-unused-vars": 1,
+    "no-console": "off",
+    "no-unused-vars": "warn",
     "semi": [ 1, "always" ],
     "quotes": [ "warn", "single" ],
     "guard-for-in": "off",
-    "require-await": 1,
+    "require-await": "warn",
     "react/prop-types": "warn",
     "react/display-name": "off",
     "class-methods-use-this": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-extra-boolean-cast": "off",
+    "max-len": [ "warn", {
+      "code": 100,
+      "ignoreRegExpLiterals": true
+    }],
+    "id-length": [ "warn", {
+      "exceptions": [ "_", "i", "j", "x", "y" ]
+    }]
   }
 }

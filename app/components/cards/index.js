@@ -1,7 +1,7 @@
-import AboutMe from './about-me/AboutMe.jsx';
-import Projects from './projects/Projects.jsx';
+import AboutMe from './about-me/AboutMe';
+import Projects from './projects/Projects';
 
 export {
-    AboutMe,
-    Projects
+  AboutMe,
+  Projects
 };

@@ -1,6 +1,6 @@
-import * as actionTypes from '../constants';
+import * as actionTypes from '../../constants';
 
-const INIT_STATE = {
+export const initialState = {
   client: {
     scrollPos: { x: 0, y: 0 },
     dimensions: { width: 0, height: 0 },
@@ -11,7 +11,7 @@ const INIT_STATE = {
   }
 };
 
-export default (state = INIT_STATE, action) => {
+export default (state = initialState, action) => {
   const nextState = { ...state };
   
   switch (action.type) {

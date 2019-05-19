@@ -1,15 +1,28 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-// import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 import StoreContext from './context';
 import { StoreType } from './types';
+import { useEnhancedReducer } from './hooks';
+import { initialState as _initialState } from './reducers';
+import { logMiddleware, thunkMiddleware } from './middleware';
+
+const middleware = process.env.NODE_ENV === 'production'
+  ? [thunkMiddleware] 
+  : [thunkMiddleware, /** thunkMiddleware has to come first */ logMiddleware];
 
 function Store({ initialState, children }) {
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  const [state, dispatch] = useEnhancedReducer(
+    rootReducer,
+    initialState,
+    middleware
+  );
 
   return (
-    <StoreContext.Provider value={{ ...state, dispatch }}>
+    <StoreContext.Provider value={{
+      ...state,
+      dispatch
+    }}>
       {children}
     </StoreContext.Provider>
   );
@@ -18,6 +31,10 @@ function Store({ initialState, children }) {
 Store.propTypes = {
   initialState: PropTypes.shape(StoreType),
   children: PropTypes.element
+};
+
+Store.defaultProps = {
+  initialState: _initialState
 };
 
 export default Store;

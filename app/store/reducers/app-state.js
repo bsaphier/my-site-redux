@@ -1,13 +1,13 @@
-import * as actionTypes from '../constants';
+import * as actionTypes from '../../constants';
 
-const INIT_STATE = {
+export const initialState = {
   loading: true,
   dataDidLoad: false,
   fontsDidLoad: false,
   displayGreeting: false
 };
 
-export default (state = INIT_STATE, action) => {
+export default (state = initialState, action) => {
   const nextState = { ...state };
 
   switch (action.type) {
