@@ -1,7 +1,5 @@
-// import { actionCreators as audioActionCreators } from 'react-redux-webaudio';
 import WebFont from 'webfontloader';
-import * as actionTypes from './constants';
-import { soundCreator } from './utils';
+import * as actionTypes from '../../constants';
 
 /* LAYOUT ACTION-CREATORS */
 export const openBurger = () => ({
@@ -83,18 +81,4 @@ export const toggleDrone = on => dispatch => {
   } else {
     dispatch(deactivateDrone());
   }
-};
-
-
-/* AUDIO ACTION-CREATORS */
-export const playSound = note => dispatch => {
-  let pluckSynth = soundCreator( note );
-  pluckSynth();
-  // dispatch(audioActionCreators.emit(pluckSynth));
-};
-
-export const playDrone = note => dispatch => {
-  let pluckSynth = soundCreator({ noteInHz: note });
-  pluckSynth();
-  // dispatch(audioActionCreators.emit(pluckSynth));
 };

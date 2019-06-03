@@ -15,18 +15,20 @@ const skills = [
   'Redux'
 ];
 
-const Skills = ({ display }) => (
-  <div className={display ? `${s.show} ${s.skillsContent}` : s.skillsContent}>
-    <div className={s.subTitle}>{'Some Tech I Like to Work With'}</div>
-    <div className={s.skillWrap}>
-      {skills.map((skill, i) => (
-        <span key={skill + (+i)} className={s.skill}>
-          {skill}
-        </span>
-      ))}
+function Skills({ display }) {
+  return (
+    <div className={display ? `${s.show} ${s.skillsContent}` : s.skillsContent}>
+      <div className={s.subTitle}>{'Some Tech I Like to Work With'}</div>
+      <div className={s.skillWrap}>
+        {skills.map((skill, i) => (
+          <span key={skill + (+i)} className={s.skill}>
+            {skill}
+          </span>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 Skills.propTypes = {
   display: PropTypes.bool

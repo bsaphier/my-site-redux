@@ -24,28 +24,30 @@ const aboutMeLong = 'I am a developer in NYC who loves solving creative challeng
 I came from a background in audio engineering and sound design. Now I enjoy discovering \
 experimental methods of utilizing music through computer code.';
 
-const AboutMe = () => (
-  <SSC.Card title={'About Me'} expandable>
-    {(clicked) => (
-      <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
-          <div className={s.contentBlock}>
-            {clicked ? aboutMeLong : aboutMeBrief}
-          </div>
-          <Skills display={clicked} />
-          <div className={clicked ? `${s.linksWrap} ${s.clicked}` : s.linksWrap}>
-            {socialMedia.map((link, i) => (
-              <Link
-                key={`${link.name}0${++i}`}
-                className={clicked ? `${s.clicked} ${s.link}` : s.link}
-                href={link.url}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-      </div>
-    )}
-  </SSC.Card>
-);
+function AboutMe() {
+  return (
+    <SSC.Card title={'About Me'} expandable>
+      {(clicked) => (
+        <div className={clicked ? `${s.clicked} ${s.cContent}` : s.cContent}>
+            <div className={s.contentBlock}>
+              {clicked ? aboutMeLong : aboutMeBrief}
+            </div>
+            <Skills display={clicked} />
+            <div className={clicked ? `${s.linksWrap} ${s.clicked}` : s.linksWrap}>
+              {socialMedia.map((link, i) => (
+                <Link
+                  key={`${link.name}0${++i}`}
+                  className={clicked ? `${s.clicked} ${s.link}` : s.link}
+                  href={link.url}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+        </div>
+      )}
+    </SSC.Card>
+  );
+}
 
 export default AboutMe;

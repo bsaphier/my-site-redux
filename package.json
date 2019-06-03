@@ -1,6 +1,6 @@
 {
   "name": "my-site-redux",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Yet another super simple site to serve as my portfolio",
   "main": "index.js",
   "scripts": {
@@ -33,8 +33,6 @@
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.30.0",
@@ -46,11 +44,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-motion": "^0.5.2",
-    "react-redux": "^7.0.3",
-    "react-redux-webaudio": "^2.0.0",
     "react-ssc": "0.0.803",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
     "webfontloader": "^1.6.28"
   }
 }

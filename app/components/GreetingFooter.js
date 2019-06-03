@@ -1,32 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Motion } from 'react-motion';
-import { btnHoverMotion } from '../utils';
+import { btnHoverMotion } from '../motion';
 import s from './greeting-footer.scss';
 
-function GreetingFooter({ content, display, onClick: handleClick }) {
+function GreetingFooter({ content, flip, display, onClick: handleClick }) {
   const [state, setState] = useState({
     scale: btnHoverMotion.scale.initial,
+    rotate: 0,
     translate: btnHoverMotion.translate.initial
   });
-
+  
   function handleHover() {
-    setState({
+    setState(state => ({
+      ...state,
       scale: btnHoverMotion.scale.mouseOver,
       translate: btnHoverMotion.translate.mouseOver
-    });
+    }));
   }
-
+  
   function handleLeave() {
-    setState({
+    setState(state => ({
+      ...state,
       scale: btnHoverMotion.scale.mouseLeave,
       translate: btnHoverMotion.translate.mouseLeave
-    }); 
+    })); 
   }
+  
+  useEffect(() => {
+    setState(state => ({
+      ...state,
+      rotate: btnHoverMotion.rotate[flip ? 'flipped' : 'initial'],
+    }));
+  }, [flip]);
 
   return (
     <Motion style={state}>
-      {({ scale, translate }) => (
+      {({ scale, rotate, translate }) => (
         <div
           className={display ? s.greetingFooter : `${s.greetingFooter} ${s.hide}`}
           onMouseOver={handleHover}
@@ -50,7 +60,7 @@ function GreetingFooter({ content, display, onClick: handleClick }) {
             handleClick();
           }}
           style={{
-            transform: `scale(${scale}) translateY(${translate}%)`
+            transform: `scale(${scale}) translateY(${translate}%) rotate(${rotate}deg)`
           }}
         >
           {content ? content : (
@@ -69,6 +79,7 @@ function GreetingFooter({ content, display, onClick: handleClick }) {
 }
 
 GreetingFooter.propTypes = {
+  flip: PropTypes.bool,
   content: PropTypes.any,
   display: PropTypes.bool,
   onClick: PropTypes.func

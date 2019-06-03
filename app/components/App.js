@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import * as actionCreators from '../actions';
-import { Context } from '../store/index.js';
-import Main from './Main';
+import { Context, getView, loadData, loadFonts, onLoaded, handleScroll } from '../store';
 import Loader from './Loader';
+import Main from './Main';
 
 function App() {
   const { appState, dispatch } = useContext(Context);
@@ -10,25 +9,25 @@ function App() {
   
   // only call on first render
   useEffect(() => {
-    const handleScroll = () => {
-      dispatch(actionCreators.handleScroll({
+    const _handleScroll = () => {
+      dispatch(handleScroll({
         x: window.scrollX,
         y: window.scrollY,
       }));
     };
     
     const handleResize = () => {
-      dispatch(actionCreators.getView(window));
+      dispatch(getView(window));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', _handleScroll);
     window.addEventListener('resize', handleResize);
-    dispatch(actionCreators.loadData());
-    dispatch(actionCreators.loadFonts());
+    dispatch(loadData());
+    dispatch(loadFonts());
     handleResize();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', _handleScroll);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
@@ -36,7 +35,7 @@ function App() {
   // check if data has loaded
   useEffect(() => {
     if (loading && dataDidLoad && fontsDidLoad) {
-      dispatch(actionCreators.onLoaded());
+      dispatch(onLoaded());
     }
   }, [loading, dataDidLoad, fontsDidLoad]);
 

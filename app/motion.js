@@ -49,5 +49,9 @@ export const btnHoverMotion = {
         initial: 0,
         mouseOver: spring(-13, stiff),
         mouseLeave: spring(0, gentle)
+    },
+    rotate: {
+        initial: spring(0, wobbly),
+        flipped: spring(180, wobbly)
     }
 };

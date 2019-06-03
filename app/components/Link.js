@@ -5,7 +5,7 @@ import s from './site-description.scss';
 function handleClick(event) {
   event.stopPropagation();
   event.preventDefault();
-  window.open(event.target.href); // TODO: is it safe to open up a new tab this way?
+  window.open(event.target.href);
 }
 
 function Link({ href, children, ...props }) {

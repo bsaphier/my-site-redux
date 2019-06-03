@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import App from './components/App';
 import Store from './store/index.js';
 import 'react-ssc/dist/lib.css';
-import './styles.scss';
+import './styles/styles.scss';
 
 render(
   <Store>

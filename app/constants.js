@@ -4,7 +4,6 @@ export const CLOSE_BURGER = 'CLOSE_BURGER';
 export const ON_SCROLL = 'ON_SCROLL';
 export const RESIZE = 'RESIZE';
 
-
 /* APP-STATE ACTION-TYPES */
 export const DATA_LOADED = 'DATA_LOADED';
 export const FONTS_LOADED = 'FONTS_LOADED';
@@ -18,7 +17,6 @@ export const TOGGLE_GREETING = 'TOGGLE_GREETING';
 /* SOUND ACTION-TYPES */
 export const DRONE_ON = 'DRONE_ON';
 export const DRONE_OFF = 'DRONE_OFF';
-
 
 /* WEB AUDIO */
 export const ROOT_IN_HZ = 220;

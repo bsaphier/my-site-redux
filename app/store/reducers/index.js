@@ -10,9 +10,9 @@ export const initialState = {
 
 function rootReducer(state, action) {
   return {
-    view: { ...view(state, action) },
-    sound : { ...sound(state, action) },
-    appState: { ...appState(state, action) },
+    view: { ...view(state.view, action) },
+    sound : { ...sound(state.sound, action) },
+    appState: { ...appState(state.appState, action) },
   };
 }
 

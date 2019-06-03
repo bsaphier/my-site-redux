@@ -1,25 +1,21 @@
 import React, { useContext, useEffect } from 'react';
 import SSC from 'react-ssc';
-// import { RRWAEngine } from 'react-redux-webaudio';
-import * as actionCreators from '../actions';
-import { Context } from '../store';
-import { useGreetingIn } from '../store/hooks';
-import About from './About';
-import Footer from './Footer';
+import { Context, useGreetingIn, showGreeting, hideGreeting } from '../store';
 import Greeting from './Greeting';
+import Footer from './Footer';
+import About from './About';
 
 function Main() {
   const { dispatch } = useContext(Context);
   const greetingIn = useGreetingIn();
 
   useEffect(() => {
-    const toggleAction = greetingIn ? actionCreators.showGreeting : actionCreators.hideGreeting;
+    const toggleAction = greetingIn ? showGreeting : hideGreeting;
     dispatch(toggleAction());
   }, [greetingIn]);
 
   return (
     <SSC.Container>
-      {/* <RRWAEngine store={store} /> */}
       <SSC.Page style={{ paddingTop: 0 }}>
         <Greeting />
       </SSC.Page>

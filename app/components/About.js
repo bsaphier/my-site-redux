@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import SSC from 'react-ssc';
-import * as actionCreators from '../actions';
+import * as actionCreators from '../store/actions';
 import s from './about.scss';
 import { Context } from '../store';
 import * as Cards from './cards';
 import SiteDescription from './SiteDescription';
-import layer0 from '../bin/images/sot0.svg';
-import layer1 from '../bin/images/sot1.svg';
-import layer2 from '../bin/images/sot2.svg';
+import layer0 from '../assets/images/sot0.svg';
+import layer1 from '../assets/images/sot1.svg';
+import layer2 from '../assets/images/sot2.svg';
+import { playSound } from '../sound';
 
 const plaxLayers = [
   {
@@ -22,11 +23,11 @@ const plaxLayers = [
   }
 ];
 
-const About = () => {
+function About() {
   const { sound, dispatch } = useContext(Context);
   const droneOn = sound.droneOn;
   const droneToggle = on => dispatch(actionCreators.toggleDrone(on));
-  const playDrone = note => dispatch(actionCreators.playDrone(note));
+  const playDrone = note => playSound({ noteInHz: note });
 
   const cb = (m, r) => playDrone(250 + ((m.x + m.y) % 500));
 
@@ -54,6 +55,6 @@ const About = () => {
       </div>
     </SSC.PageContent>
   );
-};
+}
 
 export default About;

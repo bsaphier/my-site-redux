@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import { Motion } from 'react-motion';
 import SSC from 'react-ssc';
-import * as actionCreators from '../actions';
 import s from './greeting.scss';
 import { Context } from '../store';
-import { bluesScale, greetingMotion } from '../utils';
+import { greetingMotion } from '../motion';
+import { playSound, bluesScale } from '../sound';
 import GreetingFooter from './GreetingFooter';
 
 const greetingMessage = [
@@ -36,31 +36,40 @@ const greetingMessage = [
 ];
 
 function Greeting() {
+  const { view, appState } = useContext(Context);
   const [state, setState] = useState({
     showFooter1: false,
     showFooter2: false,
     motion: greetingMotion.initial
   });
-  const { view, appState, dispatch } = useContext(Context);
   const pageRef = useRef(null);
+
   const { displayGreeting } = appState;
   let showFooter1 = view.client.scrollPos.y < view.client.dimensions.height / 32;
   let showFooter2 = view.client.scrollPos.y < view.client.dimensions.height;
 
   const handleClick = () => {
-    // scroll to the next section
-    pageRef.current
-      .parentNode     // this page
-      .parentNode     // page container
-      .nextSibling    // the next section
-      .scrollIntoView({
+    if (displayGreeting) {
+      // scroll to the next section
+      pageRef.current
+        .parentNode     // this page
+        .parentNode     // page container
+        .nextSibling    // the next section
+        .scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+    } else {
+      // scroll to top
+      pageRef.current.parentNode.scrollIntoView({
         behavior: 'smooth',
         block: 'center'
       });
+    }
   };
 
   const hover = ({ id, sound }) => {
-    dispatch(actionCreators.playSound(sound));
+    playSound(sound);
     if (displayGreeting) {
       setState(() => ({ motion: {
         ...greetingMotion.enter,
@@ -86,8 +95,8 @@ function Greeting() {
 
   return (
     <SSC.PageContent>
-      {/* {<span className={s.guideOne} />} */}
-      {/* {<span className={s.guideTwo} />} */}
+      {/* <span className={s.guideOne} /> */}
+      {/* <span className={s.guideTwo} /> */}
       <Motion style={state.motion}>
         {interpStyle => (
           <div
@@ -115,8 +124,8 @@ function Greeting() {
         className={displayGreeting ? `${s.footWrap} ${s.hueShift}` : s.footWrap}
         ref={pageRef}
       >
-        <GreetingFooter display={showFooter1} onClick={handleClick} />
-        <GreetingFooter display={showFooter2} onClick={handleClick} />
+        <GreetingFooter flip={!displayGreeting} display={showFooter1} onClick={handleClick} />
+        <GreetingFooter flip={!displayGreeting} display={showFooter2} onClick={handleClick} />
       </div>
     </SSC.PageContent>
   );

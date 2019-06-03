@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import rootReducer from '../reducers';
+import rootReducer from './reducers';
 import StoreContext from './context';
 import { StoreType } from './types';
 import { useEnhancedReducer } from './hooks';
